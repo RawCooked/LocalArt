@@ -79,6 +79,23 @@ button:hover{
 	transform: scale(.6);
 }
 
+.fgp {
+	transition: 500ms;
+	font-size: smaller;
+	margin-left: 60px;
+	color: bisque;
+	
+}
+
+.fgp:hover{
+	font-size: medium;
+	color:grey;
+	margin-left: 65px;
+	transition: 500ms;
+
+
+}
+
 #chk:checked ~ .login{
 	transform: translateY(-500px);
 }
