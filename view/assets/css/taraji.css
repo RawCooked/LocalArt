@@ -1,0 +1,139 @@
+
+/* Ajouter une animation d'agrandissement aux éléments */
+.h1, .logo, .u-btn-2, .btn-success, .input-group {
+    transition: transform 0.2s ease-in-out;
+}
+
+.h1:hover, .logo:hover, .u-btn-2:hover, .btn-success:hover, .input-group:hover {
+    transform: scale(1.1);
+}
+
+/* Changer la couleur de fond */
+body {
+    background-color: #f0f0f0; /* Couleur de fond de votre choix */
+}
+
+/* Agrandir les inputs et les mettre dans un cadre */
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc; /* Bordure de cadre */
+    border-radius: 5px; /* Coins arrondis */
+}
+
+/* Mettre en cadre le bouton "Learn More" */
+.u-btn-2 {
+    border: 1px solid #007bff; /* Bordure du cadre */
+    border-radius: 5px; /* Coins arrondis */
+    padding: 10px 20px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.u-btn-2:hover {
+    background-color: #007bff; /* Couleur de fond au survol */
+    color: #fff; /* Couleur du texte au survol */
+}
+.input-wrapper {
+    position: relative;
+    margin-top: 5px;
+}
+
+.input-wrapper::before {
+    content: '\f007'; /* Utilisez le code Unicode correspondant à l'icône que vous souhaitez utiliser (par exemple, un icône de cadre) */
+    font-family: 'Font Awesome'; /* Assurez-vous que la police d'icônes est chargée, par exemple, Font Awesome */
+    position: absolute;
+    left: 10px; /* Ajustez la position de l'icône */
+    top: 50%; /* Pour centrer l'icône verticalement */
+    transform: translateY(-50%);
+    color: #888; /* Couleur de l'icône */
+    font-size: 16px; /* Taille de l'icône */
+    z-index: 1; /* Placez l'icône au-dessus de l'input */
+}
+
+.form-control {
+    padding-left: 30px; /* Ajustez la valeur pour dégager l'espace de l'icône */
+}
+/* Styles pour les inputs */
+.form-group {
+    position: relative;
+}
+
+.form-control {
+    padding: 10px;
+    border: 1px solid #ccc; /* Bordure de cadre */
+    border-radius: 5px; /* Coins arrondis */
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+/* Animation de zoom au clic */
+.form-control:focus {
+    border-color: #007bff; /* Couleur de la bordure au focus */
+    transform: scale(1.05); /* Zoom de 5% au focus */
+}
+
+/* Retirez la bordure au clic (si vous le souhaitez) */
+.form-control:focus {
+    outline: none;
+}
+/* Styles pour les inputs */
+.form-group {
+    position: relative;
+    margin-bottom: 20px; /* Espacement entre les groupes d'inputs */
+}
+
+.form-control {
+    padding: 10px;
+    border: 1px solid #ccc; /* Bordure de cadre */
+    border-radius: 5px; /* Coins arrondis */
+    width: 100%;
+    transition: border-color 0.2s; /* Animation de transition de la couleur de la bordure */
+}
+
+/* Ajouter une bordure aux inputs au focus */
+.form-control:focus {
+    border-color: #007bff; /* Couleur de la bordure au focus */
+    outline: none; /* Supprime la bordure par défaut du navigateur */
+}
+/* Style pour la barre de navigation en haut */
+.navbar {
+    background-color: #3366cc; /* Couleur de fond de votre choix */
+    color: #fff; /* Couleur du texte */
+}
+/* Style pour la couleur du texte "Contactez Nous" */
+.h1 {
+    color: #ff6600; /* Couleur de texte de votre choix */
+}
+/* Style pour la forme de l'écriture du texte "Contactez Nous" */
+.h1 {
+    font-family: 'Nunito', sans-serif; /* Remplacez 'Nunito' par le nom de la police que vous souhaitez utiliser */
+    color: #ff6600; /* Couleur de texte de votre choix */
+}
+/* Style pour l'image avec animation */
+.img {
+    transition: transform 0.5s ease-in-out; /* Animation de transformation de 0.3 seconde avec effet d'entrée et de sortie en douceur */
+}
+
+/* Ajouter une transformation au survol de l'image */
+.img:hover {
+    transform: scale(0.95); /* Agrandir l'image de 10% au survol */
+}
+/* Style pour l'animation du panier */
+.nav-icon {
+    position: relative;
+    transition: transform 0.2s ease-in-out; /* Animation de transformation de 0.2 seconde avec effet d'entrée et de sortie en douceur */
+}
+
+/* Ajouter une transformation au survol du panier */
+.nav-icon:hover {
+    transform: scale(1.1); /* Agrandir le panier de 10% au survol */
+}
+
+
+
+
+
+
+
+
