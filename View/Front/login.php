@@ -1,18 +1,41 @@
 <?php
-if (isset($_GET['username']) && isset($_GET['email']) && isset($_GET['password'])) {
-    // Process the sign-up data
-    $username = $_GET['username'];
-    $email = $_GET['email'];
-    $password = $_GET['password'];
+include 'C:/xampp/htdocs/LocalArt/Model/user.php';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST['signup'])) {
+        // Handle signup form submission
+        $username = $_POST['username'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+
+
+        
+        
+
+        // You should validate and process the signup data using your user class here.
+        // For now, you can simply display the received data:
+        echo "<h1>Signup data received: Username = $username, Email = $email, Password = $password";
+    } elseif (isset($_POST['login'])) {
+        // Handle login form submission
+        $loginEmail = $_POST['login-email'];
+        $loginPassword = $_POST['login-pswd'];
+
+
+        $user1= new user(0,"0","0","0","0");
+      $users = $user1->Getuser();
+      var_dump($users);
+
+
+        // You should validate and process the login data using your user class here.
+        // For now, you can simply display the received data:
+        echo "Login data received: Email = $loginEmail, Password = $loginPassword";
+    }
     
 }
 
-if (isset($_GET['login-email']) && isset($_GET['login-pswd'])) {
-    $loginEmail = $_GET['login-email'];
-    $loginPassword = $_GET['login-pswd'];
+$user1= new user(0,"username","email","password","0");
+    $user1->Adduser(0,"username","email","password","0");
 
-
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -103,7 +126,7 @@ if (isset($_GET['login-email']) && isset($_GET['login-pswd'])) {
       <input type="email" id="email" placeholder="Email">
       <input type="password" id="pswd" placeholder="Password">
       <button>Sign up</button>
-      <div id="signup-error" class="fgp" style="color: red;"></div>
+      <div id="signup-error" class="fgp"></div>
     </form>
   </div>
   <div class="login">
@@ -113,7 +136,7 @@ if (isset($_GET['login-email']) && isset($_GET['login-pswd'])) {
       <input type="password" id="login-pswd" placeholder="Password">
       <a href="forgot-password.html" class="fgp">forget password</a>
       <button id="login-button" onclick="return validateLoginForm()">Login</button>
-      <div id="login-error" class="fgp" style="color: red;"></div>
+      <div id="login-error" class="fgp"></div>
     </form>
   </div>
 </div>

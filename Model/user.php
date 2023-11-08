@@ -5,13 +5,14 @@ require 'C:/xampp/htdocs/LocalArt/config.php';
 // Le reste du code HTML
 class user{
 
-    private string $id;
+    private int $id_user;
     private string $nom;
     public string $email;
     private string $password;
     private string $state;
 
-    public function __construct($nom,$email,$password,$state) {
+    public function __construct($id_user,$nom,$email,$password,$state) {
+    $this->id_user=$id_user;
     $this->nom = $nom;
     $this->email = $email;
     $this->password = $password;
@@ -61,6 +62,16 @@ class user{
 
         return $this;
     }
+    public function getid_user()
+    {
+        return $this->id_user;
+    }
+    public function setid_user($id_user)
+    {
+        $this->id_user = $id_user;
+
+        return $this;
+    }
 
 
     public function Getuser() {
@@ -83,13 +94,13 @@ class user{
         }
     }
 
-    public function adduser($nom, $email, $password, $state): bool
+    public function Adduser($id_user ,$nom, $email, $password, $state): bool
     {
         try {
             $pdo = config::getConnexion(); // Get the PDO connection using the config class
     
-            $query = $pdo->prepare('INSERT INTO user (nom, email, password, state) VALUES (?, ?, ?, ?)');
-            $query->execute([$nom, $email, $password, $state]);
+            $query = $pdo->prepare('INSERT INTO user (id_user, nom, email, password, state) VALUES (?, ?, ?, ?, ?)');
+            $query->execute([$id_user, $nom, $email, $password, $state]);
     
             // Check if the query was successful
             if ($query->rowCount() > 0) {
@@ -103,6 +114,9 @@ class user{
         }
     }
 
+
+    
+   
 }
 
 
