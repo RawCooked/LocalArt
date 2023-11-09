@@ -114,6 +114,25 @@ class user{
         }
     }
 
+    public function Deleteuser($id_user): bool {
+        try {
+            $pdo = config::getConnexion(); // Get the PDO connection using the config class
+
+            $query = $pdo->prepare('DELETE FROM user WHERE id_user = ?');
+            $query->execute([$id_user]);
+
+            // Check if the query was successful
+            if ($query->rowCount() > 0) {
+                return true; // User deleted successfully
+            } else {
+                return false; // User not found or not deleted
+            }
+        } catch (Exception $e) {
+            echo "Error: " . $e->getMessage();
+            return false; // An error occurred
+        }
+    }
+
 
     
    
