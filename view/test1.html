@@ -316,7 +316,7 @@ document.getElementById("defaultOpen").click();
                         <input id="cmnt" type= "text" class="form-control" placeholder="Votre commentaire*" > 
                         <label id="msg2"></label>
                       </div>
-                      <button type="submit" class="btn btn-primary" style="background-color:green;">Poster commentaire</button>
+                      <button id="client" type="submit" class="btn btn-primary" style="background-color:green;">Poster commentaire</button>
             
                   </form>
   
@@ -343,7 +343,7 @@ document.getElementById("defaultOpen").click();
                         <label id="msg5"></label>
                     </div>
                   </div>
-                  <button type="submit" class="btn btn-primary" style="background-color:green;">Poster article</button>
+                  <button id="artiste"  type="submit" class="btn btn-primary" style="background-color:green;">Poster article</button>
 
                 </form>
 
@@ -546,8 +546,8 @@ element.addEventListener("submit", function(e){e.preventDefault()
     }
     
 });
-const element1 = document.getElementById("arBtn");
-element.addEventListener("submit", function(e){e.preventDefault()
+const element1 = document.getElementById("nom");
+element1.addEventListener("keyup", function(e){e.preventDefault()
     var ch=document.getElementById("nom").value;
     var i=0;
     var test=true
@@ -575,13 +575,17 @@ element.addEventListener("submit", function(e){e.preventDefault()
         document.getElementById("msg3").innerHTML ="correct"
         document.getElementById("msg3").style.color="green"
     }
+    })
+    const element2 = document.getElementById("art");
+element2.addEventListener("keyup", function(e){e.preventDefault()
+const element2 = document.getElementById("prenom");
     i=0;
     test=true
     ch=document.getElementById("art").value;
     if(ch.length<1)
     {
         test==false
-        document.getElementById("msg5").innerHTML ="veuller entrer commentaire"
+        document.getElementById("msg5").innerHTML ="veuller entrer un article"
         document.getElementById("msg5").style.color="red"
 
     }
@@ -590,8 +594,8 @@ element.addEventListener("submit", function(e){e.preventDefault()
         document.getElementById("msg5").style.color="green"
     }
   })
-const element2 = document.getElementById("email");
-    element2.addEventListener("keyup", function(e){e.preventDefault()
+const element3 = document.getElementById("email");
+    element3.addEventListener("keyup", function(e){e.preventDefault()
         var ch=document.getElementById("email").value
         var i;
         var test=true
