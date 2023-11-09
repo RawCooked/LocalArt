@@ -34,7 +34,7 @@
     <link rel="stylesheet" href="test1.css">
     <link rel="stylesheet" href="test3.css">
     <link rel="stylesheet" href="test4.css">
-    
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 
 <body>
@@ -155,6 +155,7 @@
     <!-- Close Header -->
     <!-- les images en haut -->
 <p>cliquer sur les boutons dans le tableau</p>
+<div>
 <div class="tab">
   <button class="tablinks" onclick="openCity(event, 'Art')" id="defaultOpen">art</button>
   <button class="tablinks" onclick="openCity(event, 'Culture')">culture</button>
@@ -168,6 +169,7 @@
 <div id="Culture" class="tabcontent">
   <h3>culture</h3>
   <p>La culture est un ensemble lié de manières de penser, de sentir et d'agir plus ou moins formalisées qui, étant apprises et partagées par une pluralité de personnes, servent, d'une manière à la fois objective et symbolique</p> 
+</div>
 </div>
 <script>
 function openCity(evt, cityName) {
@@ -188,7 +190,10 @@ function openCity(evt, cityName) {
 document.getElementById("defaultOpen").click();
 </script>
     <div style="text-align:center">
-        <h2>notre culture est notre identitée</h2>
+      <div class="w3-panel w3-leftbar w3-light-grey">
+        <p class="w3-xlarge w3-serif"><i>“L’art de plaire est l’art de tromper.”</i><br></p>
+        <p>VAUVENARGUES</p>
+      </div>
         <p>cliquer sur les images si dessous</p>
       </div>
       
@@ -241,7 +246,7 @@ document.getElementById("defaultOpen").click();
           <div class="col-lg-8 entries">
             <div class="blog-author d-flex align-items-center">
               <img src="assets/img/blog/blog-author.jpg" class="rounded-circle float-left" alt="">
-             <div>
+             <div id="article">
                 <h4>Mari Donal</h4>
                 <div class="social-links">
                     <a class="text-light" href="https://fb.com" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
@@ -255,7 +260,7 @@ document.getElementById("defaultOpen").click();
             
             <div class="blog-comments">
 
-              <h4 class="comments-count">Commentaires</h4>
+              <h4 class="comments-count"id="comment">Commentaires</h4>
               <div id="comment-2" class="comment">
                 <div class="d-flex">
                   <div class="comment-img"><img src="assets/img/blog/comments-2.jpg" alt=""></div>
@@ -316,8 +321,8 @@ document.getElementById("defaultOpen").click();
                         <input id="cmnt" type= "text" class="form-control" placeholder="Votre commentaire*" > 
                         <label id="msg2"></label>
                       </div>
-                      <button id="client" type="submit" class="btn btn-primary" style="background-color:green;">Poster commentaire</button>
-            
+                      <button id="client" type="submit" class="btn btn-primary" style="background-color:green;">Poster commentaire <a href="#comment">+</a></button>
+                      
                   </form>
   
                 </div>
@@ -343,7 +348,7 @@ document.getElementById("defaultOpen").click();
                         <label id="msg5"></label>
                     </div>
                   </div>
-                  <button id="artiste"  type="submit" class="btn btn-primary" style="background-color:green;">Poster article</button>
+                  <button   type="submit" class="btn btn-primary" style="background-color:green; "onclick="Artistname()">Poster article <a href="#article">+</a></button>
 
                 </form>
 
@@ -546,8 +551,8 @@ element.addEventListener("submit", function(e){e.preventDefault()
     }
     
 });
-const element1 = document.getElementById("nom");
-element1.addEventListener("keyup", function(e){e.preventDefault()
+const element1 = document.getElementById("artBtn");
+element1.addEventListener("submit", function two(e){e.preventDefault()
     var ch=document.getElementById("nom").value;
     var i=0;
     var test=true
@@ -575,10 +580,7 @@ element1.addEventListener("keyup", function(e){e.preventDefault()
         document.getElementById("msg3").innerHTML ="correct"
         document.getElementById("msg3").style.color="green"
     }
-    })
-    const element2 = document.getElementById("art");
-element2.addEventListener("keyup", function(e){e.preventDefault()
-const element2 = document.getElementById("prenom");
+    
     i=0;
     test=true
     ch=document.getElementById("art").value;
@@ -593,9 +595,12 @@ const element2 = document.getElementById("prenom");
         document.getElementById("msg5").innerHTML ="correct"
         document.getElementById("msg5").style.color="green"
     }
-  })
-const element3 = document.getElementById("email");
-    element3.addEventListener("keyup", function(e){e.preventDefault()
+    })
+    
+    
+
+const element2 = document.getElementById("email");
+    element2.addEventListener("keyup", function(e){e.preventDefault()
         var ch=document.getElementById("email").value
         var i;
         var test=true
