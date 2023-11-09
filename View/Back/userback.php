@@ -68,6 +68,12 @@ $users = $user1->Getuser();
         /* Style the add user form */
         .add-user-form {
             display: none;
+            position: absolute;
+            background-color: #f2f2f2;
+            padding: 10px;
+            border-radius: 5px;
+            width: 300px;
+            transition: all 0.3s ease;
         }
 
         .add-user-button {
@@ -81,6 +87,46 @@ $users = $user1->Getuser();
             font-size: 16px;
             margin-bottom: 10px;
             cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .add-user-button:hover {
+            background-color: #45a049;
+        }
+
+        .add-user-form label {
+            display: block;
+            margin: 10px 0;
+        }
+
+        .add-user-form select, .add-user-form input[type="text"], .add-user-form input[type="email"], .add-user-form input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            transition: border 0.3s ease;
+        }
+
+        .add-user-form select:hover, .add-user-form input[type="text"]:hover, .add-user-form input[type="email"]:hover, .add-user-form input[type="password"]:hover {
+            border: 1px solid #45a049;
+        }
+
+        .add-user-form input[type="submit"] {
+            background-color: #45a049;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .add-user-form input[type="submit"]:hover {
+            background-color: #4CAF50;
         }
     </style>
 </head>
@@ -95,19 +141,18 @@ $users = $user1->Getuser();
         <form method="POST" action="">
             <label for="id_user">ID User:</label>
             <input type="text" name="id_user" required>
-            <br>
             <label for="nom">Nom:</label>
             <input type="text" name="nom" required>
-            <br>
             <label for="email">Email:</label>
             <input type="email" name="email" required>
-            <br>
             <label for="password">Password:</label>
             <input type="password" name="password" required>
-            <br>
             <label for="state">State:</label>
-            <input type="text" name="state" required>
-            <br>
+            <select name="state" required>
+                <option value="Admin">Admin</option>
+                <option value="Artist">Artist</option>
+                <option value="User">User</option>
+            </select>
             <input type="submit" name="addUser" value="Add User">
         </form>
     </div>
