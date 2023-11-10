@@ -293,12 +293,19 @@
   new PureCounter();
 
 })();
-function myFunction(imgs) {
-  var expandImg = document.getElementById("expandedImg");
-  var imgText = document.getElementById("imgtext");
-  expandImg.src = imgs.src;
-  imgText.innerHTML = imgs.alt;
-  expandImg.parentElement.style.display = "block";
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+}
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+}
+function openImg(imgName) {
+  var i, x;
+  x = document.getElementsByClassName("picture");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  document.getElementById(imgName).style.display = "block";
 }
 function myFunction1() {
   var input, filter, ul, li, a, i;
@@ -316,6 +323,7 @@ function myFunction1() {
     }
     
 }
+
 //---------------------------------------------------------------------------------------------
 
     

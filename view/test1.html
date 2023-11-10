@@ -7,7 +7,7 @@
   <title>Article </title>
   <meta content="" name="description">
   <meta content="" name="keywords">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Favicons -->
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 
@@ -64,42 +64,7 @@
 
 
 
-    <!-- Header -->
-     <!-- Start Top Nav -->
-     <!--<nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
-        <div class="container text-light">
-            <div class="w-100 d-flex justify-content-between">
-                <div>
-                    <table border="0">
-                        <tr>
-                            <th><i class="fa fa-phone mx-2"><a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">010-020-0340</a></i></th>
-                            <th><i class="fa fa-envelope mx-2"></i><a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">info@company.com</a></th>
-                        </tr>
-                        
-                            
-                            
-                        
-                    </table>
-                    
-                    
-                    
-                    
-                </div>
-                <div>
-                    <table>
-                        <tr>
-                            <th><a class="text-light" href="https://fb.com/templatemo" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a></th>
-                            <th><a class="text-light" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a></th>
-                            <th><a class="text-light" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter fa-sm fa-fw me-2"></i></a></th>
-                            <th><a class="text-light" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin fa-sm fa-fw"></i></a></th>
-                        </tr>
-                    </table>
-
-                    
-                </div>
-            </div>
-        </div>
-    </nav>-->
+    
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
@@ -154,89 +119,148 @@
     </nav>
     <!-- Close Header -->
     <!-- les images en haut -->
-<p>cliquer sur les boutons dans le tableau</p>
-<div>
-<div class="tab">
-  <button class="tablinks" onclick="openCity(event, 'Art')" id="defaultOpen">art</button>
-  <button class="tablinks" onclick="openCity(event, 'Culture')">culture</button>
-</div>
+    
+  
+    <div class="w3-sidebar w3-bar-block w3-dark-grey w3-animate-left" style="display:none" id="mySidebar">
+      <button class="w3-bar-item w3-button w3-large" 
+      onclick="w3_close()">Close &times;</button>
+      <a href="#article" class="w3-bar-item w3-button">consulter Article</a>
+      <a href="#ajart" class="w3-bar-item w3-button">Ajout Article</a>
+      <a href="#comment" class="w3-bar-item w3-button">consulter commentaire</a>
+      <a href="#ajcmnt" class="w3-bar-item w3-button">Ajout commentaire</a>
+    </div>
+    <div>
+      <button class="w3-button w3-white w3-xxlarge" onclick="w3_open()">&#9776;</button>
+    </div> 
+  <style >
+    .city {display:none}
+    </style>
+    <body>
+    
+    <div class="w3-container">
+    <h2>cliquer sur ce bouton:</h2>
+    <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black">Info</button>
+    
+    <div id="id01" class="w3-modal" >
+     <div class="w3-modal-content w3-card-4 w3-animate-zoom">
+      <header class="w3-container w3-green"> 
+       <span onclick="document.getElementById('id01').style.display='none'" 
+       class="w3-button w3-blue w3-xlarge w3-display-topright">&times;</span>
+       <h2>Header</h2>
+      </header>
+    
+      <div class="w3-bar w3-border-bottom">
+       <button class="tablink w3-bar-item w3-button" onclick="openCity(event, 'art')">art</button>
+       <button class="tablink w3-bar-item w3-button" onclick="openCity(event, 'culture')">culture</button>
+       <button class="tablink w3-bar-item w3-button" onclick="openCity(event, 'tun')">La tunisie</button>
+      </div>
+    
+      <div id="art" class="w3-container city">
+       <h1>art</h1>
+       <p>Ensemble des procédés, des connaissances et des règles intéressant l'exercice d'une activité ou d'une action quelconque que nous somme capable à observer</p>
+       </div>
+    
+      <div id="culture" class="w3-container city">
+       <h1>culture</h1>
+       <p>La culture est un ensemble lié de manières de penser, de sentir et d'agir plus ou moins formalisées qui, étant apprises et partagées par une pluralité de personnes, servent, d'une manière à la fois objective et symbolique</p>
+       
+      </div>
+    
+      <div id="tun" class="w3-container city">
+       <h1>Tunisie</h1>
+       <p>est un État arabophone et à majorité musulmane d'Afrique du Nord souverain depuis 1956</p><br>
+      </div>
+    
+      <div class="w3-container w3-light-grey w3-padding">
+       <button class="w3-button w3-right w3-white w3-border" 
+       onclick="document.getElementById('id01').style.display='none'">Close</button>
+      </div>
+     </div>
+    </div>
+    
+    </div>
+    <script>
+      document.getElementsByClassName("tablink")[0].click();
+      
+      function openCity(evt, cityName) {
+        var i, x, tablinks;
+        x = document.getElementsByClassName("city");
+        for (i = 0; i < x.length; i++) {
+          x[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablink");
+        for (i = 0; i < x.length; i++) {
+          tablinks[i].classList.remove("w3-light-grey");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.classList.add("w3-light-grey");
+      }
+      </script>    
 
-<div id="Art" class="tabcontent">
-  <h3>art</h3>
-  <p>Ensemble des procédés, des connaissances et des règles intéressant l'exercice d'une activité ou d'une action quelconque que nous somme capable à observer</p>
-</div>
 
-<div id="Culture" class="tabcontent">
-  <h3>culture</h3>
-  <p>La culture est un ensemble lié de manières de penser, de sentir et d'agir plus ou moins formalisées qui, étant apprises et partagées par une pluralité de personnes, servent, d'une manière à la fois objective et symbolique</p> 
-</div>
-</div>
-<script>
-function openCity(evt, cityName) {
-  var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-  document.getElementById(cityName).style.display = "block";
-  evt.currentTarget.className += " active";
-}
 
-// Get the element with id="defaultOpen" and click on it
-document.getElementById("defaultOpen").click();
 </script>
     <div style="text-align:center">
       <div class="w3-panel w3-leftbar w3-light-grey">
         <p class="w3-xlarge w3-serif"><i>“L’art de plaire est l’art de tromper.”</i><br></p>
-        <p>VAUVENARGUES</p>
-      </div>
-        <p>cliquer sur les images si dessous</p>
-      </div>
-      
+        <p>VAUVENARGUES</p> 
+      </div> 
       <!-- The four columns -->
-    <div class="row"></div>
-      <table border="0" width="1600">
-        <tr>
-            <th>
-                <div class="column">
-                    <img src="image1.jpg"  alt="un mosqué" style="width:400" onclick="myFunction(this);">
-                </div>
-            </th>
-            <th>
-                <div class="column">
-                    <img src="image2.jpg" alt="art" style="width:400" onclick="myFunction(this);">
-                </div>
-            </th>
-            <th>
-                <div class="column">
-                    <img src="image3.jpg" alt="maison tunisienne" style="width:400" onclick="myFunction(this);">
-                </div>
-            </th>
-            <th>
-                <div class="column">
-                <img src="image4.jpg" alt="culture" style="width:400" onclick="myFunction(this);">
-                </div>
-            </th>
-        </tr>
-        </table>
-    </div>
-      
-      <div class="container">
-        <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
-        <img id="expandedImg" style="width:100%">
-        <div id="imgtext"></div>
+      <div class="w3-container">
+        <p>cliquer sur les images si dessous:</p>
       </div>
       
-      <script>
-     
-      </script>
-
-    
-
+      <div class="w3-row-padding">
+        <div class="w3-col s3 w3-container">
+        <a href="javascript:void(0)" class="w3-hover-opacity" onclick="openImg('img1');">
+          <img src="image5.jpg" alt="img1" height="250px" style="width:100%">
+        </a>
+        </div>
+        <div class="w3-col s3 w3-container">
+          <a href="javascript:void(0)" class="w3-hover-opacity" onclick="openImg('img2');">
+            <img src="image2.jpg" alt="img2" height="250px" style="width:100%">
+          </a>
+        </div>
+        <div class="w3-col s3 w3-container">
+          <a href="javascript:void(0)" class="w3-hover-opacity" onclick="openImg('img3');">
+            <img src="image6.jpeg" alt="img3" height="250px"style="width:100%">
+          </a>
+        </div>
+        <div class="w3-col s3 w3-container">
+          <a href="javascript:void(0)" class="w3-hover-opacity" onclick="openImg('img4');">
+            <img src="image4.jpg" alt="img4" height="250px" style="width:100%">
+          </a>
+        </div>
+      </div><br>
+      
+      <div id="img1" class="picture w3-display-container" style="display:none">
+        <img src="image5.jpg" alt="img1" style="width:100%">
+        <span onclick="this.parentElement.style.display='none'" 
+        class="w3-display-topright w3-button w3-transparent w3-text-white">&times;</span>
+        <div class="w3-display-bottomleft w3-container w3-padding w3-text-white">Maison tunisienne</div>
+      </div>
+      
+      <div id="img2" class="picture w3-display-container" style="display:none">
+        <img src="image2.jpg" alt="img2" style="width:100%">
+        <span onclick="this.parentElement.style.display='none'" 
+        class="w3-display-topright w3-button w3-transparent w3-text-white">&times;</span>
+        <div class="w3-display-bottomleft w3-container w3-padding w3-text-white">art</div>
+      </div>
+      
+      <div id="img3" class="picture w3-display-container" style="display:none">
+        <img src="image6.jpeg" alt="img3" style="width:100%">
+        <span onclick="this.parentElement.style.display='none'" 
+        class="w3-display-topright w3-button w3-transparent">&times;</span>
+        <div class="w3-display-bottomleft w3-container w3-padding w3-text-white">Mosqué</div>
+      </div>
+      
+      <div id="img4" class="picture w3-display-container" style="display:none">
+        <img src="image4.jpg" alt="img4" style="width:100%">
+        <span onclick="this.parentElement.style.display='none'" 
+        class="w3-display-topright w3-button w3-transparent w3-text-white">&times;</span>
+        <div class="w3-display-bottomleft w3-container w3-padding w3-text-white">culture</div>
+      </div>
+    </div>
     <!-- ======= Blog Single Section ======= -->
     <section id="blog" class="blog">
       <div class="container" data-aos="fade-up">
@@ -309,7 +333,7 @@ document.getElementById("defaultOpen").click();
               
                 <div class="reply-form" >
                 
-                  <h4>Ajouter un commentaire</h4>
+                  <h4 id="ajcmnt">Ajouter un commentaire</h4>
                   <form  id="myBtn">
                     
                       <div class="col-md-6 form-group">
@@ -330,7 +354,7 @@ document.getElementById("defaultOpen").click();
               
              
               <div class="reply-form">
-                <h4>Ajouter un article</h4>
+                <h4 id="ajart">Ajouter un article</h4>
                 <form id="artBtn">
                   <div class="row">
                     <div class="col-md-6 form-group">
@@ -362,27 +386,61 @@ document.getElementById("defaultOpen").click();
 
             <div class="sidebar">
               <h2> Menu</h2>
-<p>checher une catégorie d'articles spéciffique</p>
-<div class="row">
-  <div class="left" style="background-color:#bbb;">
-    <h2>Menu</h2>
-    <input type="text" id="mySearch" onkeyup="myFunction1()" placeholder="Search.." title="Type in a category">
-    <div class="sidebar-item categories">
-      <ul id="myMenu">
-      <li><a href="blog-single.html">tableau</a></li>
-      <li><a href="#">monument</a></li>
-      <li><a href="#">ville</a></li>
-      <li><a href="#">vetement</a></li>
-      <li><a href="#">livre</a></li>
-    </ul>
-    </div>
-    
-  </div>
+              <p>checher une catégorie d'articles spécific</p>
+                <div class="w3-dropdown-hover">
+                  <button class="w3-button w3-black">Dérouler</button>
+                  <div class="w3-dropdown-content w3-bar-block w3-card w3-light-grey" id="myDIV">
+                  <input class="w3-input w3-padding" type="text" placeholder="Search.." id="myInput" onkeyup="categories()">
+                  <a class="w3-bar-item w3-button" href="#">tableaux</a>
+                  <a class="w3-bar-item w3-button" href="#">vetements traditionnels</a>
+                  <a class="w3-bar-item w3-button" href="#">monumens</a>
+                  <a class="w3-bar-item w3-button" href="#">livres</a>
+                  <a class="w3-bar-item w3-button" href="#">villes</a>
+                  </div>
+               </div>
+            </div>
+            <div class="w3-container">
+              <h5>Déplacez la souris sur "localisation" ou "citation":</h5>
+            
+              <div class="w3-dropdown-hover">localisation
+                <div class="w3-dropdown-content w3-card-4" style="width:250px">
+                  <img src="image7.png" alt="London" style="width:100%">
+                  <div class="w3-container">
+                    <p>c'est une zone de la gouvernement Arina une des quatre gouvernements de la grande tunis</p>
+                    <p>C'est la ou se déroule nos heures d'étude à esprit </p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="w3-dropdown-hover">citation
+                <div class="w3-dropdown-content w3-card-4" style="width:250px">
+                  <img src="image8.png" alt="Tokyo" style="width:100%">
+                  <div class="w3-container">
+                    <p>notre groupe est notre identitée</p>
+                    <p>il est composé par six membres</p>
+                  </div>
+                </div>
+              </div>
+            
+            </div>
 
-</div>
 
 <script>
-      
+      function categories() {
+  var input, filter, ul, li, a, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  div = document.getElementById("myDIV");
+  a = div.getElementsByTagName("a");
+  for (i = 0; i < a.length; i++) {
+    txtValue = a[i].textContent || a[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      a[i].style.display = "";
+    } else {
+      a[i].style.display = "none";
+    }
+  }
+}
 </script>
 </div>
     </section><!-- End Blog Single Section -->
