@@ -10,10 +10,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $email = $_POST['email'];
         $password = $_POST['password'];
         $state = $_POST['state'];
-        $user1->AddUser($id_user, $nom, $email, $password, $state);
+        $user1->Adduser($id_user, $nom, $email, $password, $state);
     } elseif (isset($_POST['deleteUserId'])) {
         $userId = $_POST['deleteUserId'];
         $user1->DeleteUser($userId);
+    } elseif (isset($_POST['updateUser'])) {
+        $id_user = $_POST['id_user'];
+        $nom = $_POST['nom'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $state = $_POST['state'];
+        $user1->UpdateUser($id_user, $nom, $email, $password, $state);
     }
 
     // Redirect back to the same page after form submission
@@ -52,8 +59,8 @@ $users = $user1->Getuser();
             color: white;
         }
 
-        /* Style the delete button */
-        .delete-button {
+        /* Style the delete and update buttons */
+        .delete-button, .update-button {
             background-color: #f44336;
             color: white;
             border: none;
@@ -63,6 +70,11 @@ $users = $user1->Getuser();
             display: inline-block;
             font-size: 12px;
             cursor: pointer;
+            margin-right: 5px;
+        }
+
+        .update-button {
+            background-color: #4CAF50;
         }
 
         /* Style the add user form */
@@ -128,6 +140,18 @@ $users = $user1->Getuser();
         .add-user-form input[type="submit"]:hover {
             background-color: #4CAF50;
         }
+
+        /* Style the update user form */
+        .update-user-form {
+            display: none;
+            position: absolute;
+            background-color: #f2f2f2;
+            padding: 10px;
+            border-radius: 5px;
+            width: 300px;
+            transition: all 0.3s ease;
+            z-index: 1; /* Ensure the update form is above other elements */
+        }
     </style>
 </head>
 <body>
@@ -166,7 +190,7 @@ $users = $user1->Getuser();
                 <th>Email</th>
                 <th>Password</th>
                 <th>State</th>
-                <th>Action</th> <!-- Add a new column for the delete button -->
+                <th>Action</th>
             </tr>
             </thead>
             <tbody>
@@ -182,6 +206,7 @@ $users = $user1->Getuser();
                             <input type="hidden" name="deleteUserId" value="<?php echo $user['id_user']; ?>">
                             <button class="delete-button" type="submit">Delete</button>
                         </form>
+                        <button class="update-button" onclick="toggleUpdateUserForm(<?php echo $user['id_user']; ?>)">Update</button>
                     </td>
                 </tr>
             <?php } ?>
@@ -190,12 +215,42 @@ $users = $user1->Getuser();
     <?php } else { ?>
         <p>No users found.</p>
     <?php } ?>
+
+    <!-- Update User Form -->
+    <div class="update-user-form" style="width: 500px" >
+        <form method="POST" action="">
+            <label for="id_user_update">ID User:</label>
+            <input type="text" id="id_user_update" name="id_user" required>
+            <label for="nom_update">Nom:</label>
+            <input type="text" id="nom_update" name="nom" required>
+            <label for="email_update">Email:</label>
+            <input type="email" id="email_update" name="email" required>
+            <label for="password_update">Password:</label>
+            <input type="password" id="password_update" name="password" required>
+            <label for="state_update">State:</label>
+            <select id="state_update" name="state" required>
+                <option value="Admin">Admin</option>
+                <option value="Artist">Artist</option>
+                <option value="User">User</option>
+            </select>
+            <input type="submit" name="updateUser" value="Update User">
+        </form>
+    </div>
 </div>
 
 <script>
     function toggleAddUserForm() {
         var addUserForm = document.querySelector(".add-user-form");
         addUserForm.style.display = (addUserForm.style.display === "none") ? "block" : "none";
+    }
+
+    function toggleUpdateUserForm(userId) {
+        var updateUserForm = document.querySelector(".update-user-form");
+        updateUserForm.style.display = (updateUserForm.style.display === "none") ? "block" : "none";
+
+        // Populate the update form with user data
+        document.getElementById("id_user_update").value = userId;
+        // You may need to implement an AJAX request to fetch the user data and fill the form fields accordingly.
     }
 </script>
 

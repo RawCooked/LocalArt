@@ -133,6 +133,26 @@ class user{
         }
     }
 
+    public function Updateuser($id_user, $nom, $email, $password, $state): bool
+    {
+        try {
+            $pdo = config::getConnexion();
+
+            $query = $pdo->prepare('UPDATE user SET nom=?, email=?, password=?, state=? WHERE id_user = ?');
+            $query->execute([$nom, $email, $password, $state, $id_user]);
+
+            // Check if the query was successful
+            if ($query->rowCount() > 0) {
+                return true; // User updated successfully
+            } else {
+                return false; // User not found or not updated
+            }
+        } catch (Exception $e) {
+            echo "Error: " . $e->getMessage();
+            return false; // An error occurred
+        }
+    }
+
 
     
    

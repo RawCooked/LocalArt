@@ -8,34 +8,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-
-        
-        
-
-        // You should validate and process the signup data using your user class here.
-        // For now, you can simply display the received data:
-        echo "<h1>Signup data received: Username = $username, Email = $email, Password = $password";
+        $user1 = new user(0, "0", "0", "0", "0");
+        $user1->Adduser(0, $nom, $email, $password, "user");
+      
     } elseif (isset($_POST['login'])) {
         // Handle login form submission
         $loginEmail = $_POST['login-email'];
         $loginPassword = $_POST['login-pswd'];
 
-
-        $user1= new user(0,"0","0","0","0");
-      $users = $user1->Getuser();
-      var_dump($users);
-
-
-        // You should validate and process the login data using your user class here.
-        // For now, you can simply display the received data:
-        echo "Login data received: Email = $loginEmail, Password = $loginPassword";
+        // Perform form validation (you can customize this as needed)
+        $loginError = '';
+        if (empty($loginEmail) || empty($loginPassword)) {
+            $loginError = 'Email and password are required.';
+        } else {
+            // You can add your user authentication logic here
+            // Replace this with your actual code
+            // For now, we'll just display the received data
+            echo "<h1>Login data received: Email = $loginEmail, Password = $loginPassword</h1>";
+        }
     }
-    
 }
-
-$user1= new user(0,"username","email","password","0");
-    $user1->Adduser(0,"username","email","password","0");
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
