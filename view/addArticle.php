@@ -1,3 +1,52 @@
+<?php
+include '../controller/articleA.php';
+include '../model/article.php';
+
+
+
+$error = "";
+
+// create client
+$article = null;
+
+// create an instance of the controller
+
+if (
+    isset($_POST["categorie"]) &&
+    isset($_POST["titre"]) &&
+    isset($_POST["date_creation"]) &&
+    isset($_POST["date_modification"]) &&
+    isset($_POST["nomprenom_artiste"])&&
+    isset($_POST["contenu"])
+) {
+    if (
+        !empty($_POST['categorie']) &&
+        !empty($_POST["titre"]) &&
+        !empty($_POST["date_creation"]) &&
+        !empty($_POST["date_modification"])&&
+        !empty($_POST["nomprenom_artiste"])&&
+        !empty($_POST["contenu"])
+    ) {
+        $article = new article(
+            null,
+            $_POST['categorie'],
+            $_POST['titre'],
+            $_POST['date_creation'],
+            $_POST['date_modification'],
+            $_POST['nomprenom_artiste'],
+            $_POST['contenu'],
+        );
+        $articleA->addArticle($article);
+        header('Location:tab.php');
+    } else
+        $error = "Missing information";
+}
+
+
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -179,21 +228,7 @@
     
     </div>
     <script>
-      document.getElementsByClassName("tablink")[0].click();
-      
-      function openCity(evt, cityName) {
-        var i, x, tablinks;
-        x = document.getElementsByClassName("city");
-        for (i = 0; i < x.length; i++) {
-          x[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tablink");
-        for (i = 0; i < x.length; i++) {
-          tablinks[i].classList.remove("w3-light-grey");
-        }
-        document.getElementById(cityName).style.display = "block";
-        evt.currentTarget.classList.add("w3-light-grey");
-      }
+     
       </script>    
 
 
@@ -344,39 +379,47 @@
                         <input id="cmnt" type= "text" class="form-control" placeholder="Votre commentaire*" > 
                         <label id="msg2"></label>
                       </div>
-                      <button id="client" type="submit" class="btn btn-primary" style="background-color:green;">Poster commentaire <a href="#comment">+</a></button>
+                      <button id="client" type="submit" class="btn btn-primary" style="background-color:green;"onclick="verif()"  >Poster commentaire <a href="#comment">+</a></button>
                       
                   </form>
   
                 </div>
-                
-              
-             
               <div class="reply-form">
                 <h4 id="ajart">Ajouter un article</h4>
-                <form id="artBtn">
+                
+                <div id="error">
+                    <?php echo $error; ?>
+                </div>
+                <form action="" method="POST" id="artBtn">
                   <div class="row">
                     <div class="col-md-6 form-group">
-                      <input id="cat" type= "text" class="form-control" name="categorie" placeholder="categorie de votre article*" > 
-                      <label id="msg3"></label>
+                    <select class="form-control" id="cat" type= "text" name="categorie">         
+                        <option>tableau</option>
+                        <option >vetement</option>
+                        <option >monument</option>
+                        <option >livre</option>
+                        <option >ville</option>
+                    </select>
+                      <span id="msg3" ></span> 
+                      
                     </div>
                     <div class="col-md-6 form-group">
                       <input id="title" type= "text" class="form-control" name="titre" placeholder="titre*" > 
-                      <label id="msg4"></label>
+                      <span id="msg4" ></span>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-md-6 form-group">
                       <input id="dc" type= "date" class="form-control" name="date_creation" placeholder="date creation*" > 
-                      <label id="msg5"></label>
+                      
                     </div>
                     <div class="col-md-6 form-group">
                       <input id="dm" type= "date" class="form-control" name="date_modification" placeholder="date modification*" > 
-                      <label id="msg6"></label>
+                      
                     </div>
                     <div class="col-md-6 form-group">
                       <input id="nom" type= "text" class="form-control" name="nomprenom_artiste" placeholder="nom complet*" > 
-                      <label id="msg7"></label>
+                      <span id="msg7" ></span>
                     </div>
                   </div>
                   <div class="row">
@@ -386,8 +429,7 @@
                     </div>
                   </div>
                   <div>
-                    <button  type="submit" class="btn btn-primary" style="background-color:green; " onclick="valide()">Poster article <a href="#article">+</a></button1>
-                    
+                    <button  type="submit" value="Save" class="btn btn-primary" style="background-color:green; " onclick="valide ()">Poster article <a href="#article">+</a></button>
                   </div>
                   
                   
@@ -443,21 +485,7 @@
 
 
 <script>
-      function categories() {
-  var input, filter, ul, li, a, i;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  div = document.getElementById("myDIV");
-  a = div.getElementsByTagName("a");
-  for (i = 0; i < a.length; i++) {
-    txtValue = a[i].textContent || a[i].innerText;
-    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      a[i].style.display = "";
-    } else {
-      a[i].style.display = "none";
-    }
-  }
-}
+     
 </script>
 </div>
     </section><!-- End Blog Single Section -->
@@ -581,7 +609,7 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
   <script>
-    const element = document.getElementById("myBtn");
+    /*const element = document.getElementById("myBtn");
 element.addEventListener("submit", function(e){e.preventDefault()
     var ch=document.getElementById("noun").value;
     var i=0;
@@ -625,7 +653,8 @@ element.addEventListener("submit", function(e){e.preventDefault()
         document.getElementById("msg2").style.color="green"
     }
     
-});
+});*/
+
    </script>
 
 </body>

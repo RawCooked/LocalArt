@@ -324,6 +324,168 @@ function myFunction1() {
     
 }
 
-//---------------------------------------------------------------------------------------------
+function verif(){
+  const element = document.getElementById("myBtn");
+element.addEventListener("submit", function(e){e.preventDefault()
+    var ch=document.getElementById("noun").value;
+    var i=0;
+    var test=true
+    if(ch.length<1)
+    {
+        test==false
+    }
+    do{
+        if (("a">ch.slice(i) || ch.slice(i)>"z")&&("A">ch.slice(i) || ch.slice(i)>"Z")){
+            test=false
+            
+        }
+        else {
+            i++;
+        }
 
+    }while((test==true)&&(i<ch.length))
+    if(test==false)
+    {
+        document.getElementById("msg1").innerHTML ="veuller entrer un nom valide (lettre uniquement)"
+        document.getElementById("msg1").style.color="red"
+
+    }
+    else{
+        document.getElementById("msg1").innerHTML ="correct"
+        document.getElementById("msg1").style.color="green"
+    }
+    i=0;
+    test=true
+    ch=document.getElementById("cmnt").value;
+    if(ch.length<1)
+    {
+        test==false
+        document.getElementById("msg2").innerHTML ="veuller entrer commentaire"
+        document.getElementById("msg2").style.color="red"
+
+    }
+    else{
+        document.getElementById("msg2").innerHTML ="correct"
+        document.getElementById("msg2").style.color="green"
+    }
     
+});
+}
+function valide()
+{
+    var ch=document.getElementById("dc").value
+    var ch1=document.getElementById("dm").value
+    if ((ch.slice(0,4)!="2023")||(ch.slice(5,7)>"12")||(ch.slice(5,7)<"1")||(ch.slice(8,10)>"31")||(ch.slice(8,10)<"01")){
+        alert('la date est non valide');
+    }
+    if ((ch1.slice(0,4)!="2023")||(ch1.slice(5,7)>"12")||(ch1.slice(5,7)<"1")||(ch1.slice(8,10)>"31")||(ch1.slice(8,10)<"01")){
+      alert('la date est non valide');
+    }
+    const element1 = document.getElementById("artBtn");
+element1.addEventListener("submit", function two(e){e.preventDefault()
+    var ch=document.getElementById("cat").value;
+    var i=0;
+    var test=true
+    
+    if((ch!="tableau")&& (ch!="vetement")&& (ch!="monument")&& (ch!="livre")&&(ch!="ville")){
+      test=false;
+    }
+    if(test==false)
+    {
+        document.getElementById("msg3").innerHTML ="veuller entrer une categorie existante"
+        document.getElementById("msg3").style.color="red"
+
+    }
+    else{
+        document.getElementById("msg3").innerHTML ="correct"
+        document.getElementById("msg3").style.color="green"
+    }
+    
+    i=0;
+    test=true
+    ch=document.getElementById("title").value;
+    if((ch.length<1)||(ch.length>30))
+    {
+        test==false
+        document.getElementById("msg4").innerHTML ="veuller un titre valide moin de 30 chiffre"
+        document.getElementById("msg4").style.color="red"
+
+    }
+    else{
+        document.getElementById("msg4").innerHTML ="correct"
+        document.getElementById("msg4").style.color="green"
+    }
+    var ch=document.getElementById("nom").value;
+    var i=0;
+    var test=true
+    if((ch.length<1)||(ch.length>20))
+    {
+        test=false
+    }
+    do{
+        if (("a">ch.slice(i) || ch.slice(i)>"z")&&("A">ch.slice(i) || ch.slice(i)>"Z")){
+            test=false
+            
+        }
+        else {
+            i++;
+        }
+
+    }while((test==true)&&(i<ch.length))
+    if(test==false)
+    {
+        document.getElementById("msg7").innerHTML ="veuller entrer un nom valide (lettre uniquement//pas long)"
+        document.getElementById("msg7").style.color="red"
+
+    }
+    else{
+        document.getElementById("msg7").innerHTML ="correct"
+        document.getElementById("msg7").style.color="green"
+    }
+    i=0;
+    test=true
+    ch=document.getElementById("art").value;
+    if (ch.length<1)
+    {
+        test==false
+        document.getElementById("msg8").innerHTML ="veuller ajouter un article"
+        document.getElementById("msg8").style.color="red"
+
+    }
+    else{
+        document.getElementById("msg8").innerHTML ="correct"
+        document.getElementById("msg8").style.color="green"
+    }
+    });
+}
+function categories() {
+  var input, filter, ul, li, a, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  div = document.getElementById("myDIV");
+  a = div.getElementsByTagName("a");
+  for (i = 0; i < a.length; i++) {
+    txtValue = a[i].textContent || a[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      a[i].style.display = "";
+    } else {
+      a[i].style.display = "none";
+    }
+  }
+}
+document.getElementsByClassName("tablink")[0].click();
+      
+function openCity(evt, cityName) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("city");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < x.length; i++) {
+    tablinks[i].classList.remove("w3-light-grey");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.classList.add("w3-light-grey");
+}
+//---------------------------------------------------------------------------------------------
