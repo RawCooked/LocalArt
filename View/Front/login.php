@@ -4,12 +4,12 @@ include 'C:/xampp/htdocs/LocalArt/Model/user.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['signup'])) {
         // Handle signup form submission
-        $username = $_POST['username'];
+        $username = $_POST['nom'];
         $email = $_POST['email'];
         $password = $_POST['password'];
 
         $user1 = new user(0, "0", "0", "0", "0");
-        $user1->Adduser(0, $nom, $email, $password, "user");
+        $user1->Adduser(0, $username, $email, $password, "user");
       
     } elseif (isset($_POST['login'])) {
         // Handle login form submission
@@ -112,23 +112,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <div class="main">
   <input type="checkbox" id="chk" aria-hidden="true">
   <div class="signup">
-    <form onsubmit="return validateSignupForm()">
+    <form onsubmit="return validateSignupForm()" method="POST" action="">
       <label for="chk" aria-hidden="true">Sign up</label>
-      <input type="text" id="txt" placeholder="User name">
-      <input type="email" id="email" placeholder="Email">
-      <input type="password" id="pswd" placeholder="Password">
-      <button>Sign up</button>
+      <input type="text" id="txt" name="nom" placeholder="User name">
+      <input type="email" id="email" name="email" placeholder="Email">
+      <input type="password" id="pswd" name="password" placeholder="Password">
+      <button type="submit" name="signup" >Sign up</button>
       <div id="signup-error" class="fgp"></div>
     </form>
   </div>
   <div class="login">
-    <form>
+    <form method="POST" action="">
       <label for="chk" aria-hidden="true">Login</label>
       <input type="email" id="login-email" placeholder="Email">
       <input type="password" id="login-pswd" placeholder="Password">
       <a href="forgot-password.html" class="fgp">forget password</a>
       <button id="login-button" onclick="return validateLoginForm()">Login</button>
-      <div id="login-error" class="fgp"></div>
+      <div id="login-error" name="login" class="fgp"></div>
     </form>
   </div>
 </div>
