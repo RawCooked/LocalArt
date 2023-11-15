@@ -1,0 +1,302 @@
+/* Agrandir les inputs et les mettre dans un cadre */
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc; /* Bordure de cadre */
+    border-radius: 5px; /* Coins arrondis */
+}
+
+/* Mettre en cadre le bouton "Learn More" */
+
+.u-btn-2 {
+    border: 1px solid rgba(255, 255, 255, 0.55); /* Bordure du cadre*/
+    border-radius: 5px; /* Coins arrondis */
+    padding: 10px 20px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+*/
+/* Changer la couleur de fond */
+
+/*
+body {
+    background-color: #ffffff99; /* Couleur de fond de votre choix 
+}*/
+/*
+.u-btn-2:hover {
+    background-color: rgb(255, 10, 10); /* Couleur de fond au survol 
+    color: #ffffff44; /* Couleur du texte au survol 
+}*/
+/* Ajouter une transformation au survol du panier */
+/*
+.nav-icon:hover {
+    transform: scale(1.1); /* Agrandir le panier de 10% au survol 
+}*/
+/* Ajouter une transformation au survol de l'image */
+
+
+/*
+.img:hover {
+    transform: scale(0.95); /* Agrandir l'image de 10% au survol 
+}
+
+
+
+
+/* Style pour l'image avec animation */
+
+
+
+.img {
+    transition: transform 0.7s ease-in-out; /* Animation de transformation de 0.3 seconde avec effet d'entrée et de sortie en douceur */
+}
+/* Style pour la forme de l'écriture du texte "Contactez Nous" */
+.h1 {
+    font-family: 'Nunito', sans-serif; /* Remplacez 'Nunito' par le nom de la police que vous souhaitez utiliser */
+    color: rgb(102, 51, 0 ,68); /* Couleur de texte de votre choix */
+}
+
+
+
+
+/* Style pour la couleur du texte "Contactez Nous" */
+/*
+.h1 {
+    color: rgb(98, 46, 11); /* Couleur de texte de votre choix 
+}*/
+/* Style pour la barre de navigation en haut */
+
+
+
+/*
+.navbar {rgb(124, 15, 15)
+    background-color: #d5d5d5; /* Couleur de fond de votre choix 
+    color: #ffffff5f; /* Couleur du texte 
+}
+
+
+/*
+
+
+/* Ajouter une bordure aux inputs au focus */
+/*
+.navbar {
+    background-color: #d5d5d5; /* Couleur de fond de votre choix 
+    color: #ffffff5f; /* Couleur du texte avec transparence corrigée 
+}*/
+/*
+.form-control:focus {
+    border-color: rgb(157, 163, 155); /* Couleur de la bordure au focus 
+    outline: none; /* Supprime la bordure par défaut du navigateur 
+}*/
+
+/* Styles pour les inputs */
+
+.form-group {
+    position: relative;
+    margin-bottom: 20px; /* Espacement entre les groupes d'inputs */
+}
+
+/* Animation de zoom au clic */
+
+.form-control:focus {
+    border-color: rgb(143, 83, 37); /* Couleur de la bordure au focus */
+    transform: scale(1.05); /* Zoom de 5% au focus */
+}
+
+.input-wrapper {
+    position: relative;
+    margin-top: 5px;
+}
+.h1:hover, .logo:hover, .u-btn-2:hover, .btn-success:hover, .input-group:hover {
+    transform: scale(1.1);
+}
+
+/* General Styles */
+
+
+
+body {
+    background-color: #e9e9e9;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    transition: border-color 0.3s, transform 0.7s ease-in-out;
+}
+
+/*
+.form-control:focus {
+    border-color: rgb(157, 163, 155);
+    outline: none;
+    transform: scale(1.05);
+}
+
+.input-wrapper {
+    position: relative;
+    margin-top: 5px;
+}
+*/
+/*
+.h1 {
+    font-family: 'Nunito', sans-serif;
+    color: #09ff00;
+}*/
+
+
+
+.navbar {
+    background-color: #ffffff; /*tbadal couleur nav bar*/
+    color: #e47373;
+}
+
+
+
+.navbar-nav .nav-link {
+    color: rgb(0, 0, 0) !important; /*tbadal les couleurs acceuil boutique ...*/
+}
+
+
+/*
+.navbar-nav .nav-item.active .nav-link {
+    background-color: #615107;
+    color: #aa0e0e !important;
+}*/
+
+#contactText {
+    color: #823f09;
+}
+
+/*
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+*/
+/* Header Styles */
+
+
+.logo {
+    color: #ff5500;
+}
+
+.nav-icon,
+.img {
+    transition: transform 0.7s ease-in-out;
+}
+
+.nav-icon:hover,
+.img:hover {
+    transform: scale(1.1);
+}
+
+
+/* Map Styles */
+
+#mapid {
+    width: 100%;
+    height: 300px;
+}
+
+/* Contact Form Styles */
+
+
+.container-fluid,
+.container {
+    padding: 0;
+}
+
+#myForm {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1)
+}
+
+
+
+
+/* Footer Styles */
+/*
+#tempaltemo_footer {
+    background-color: #5287bc;
+    color: #ffffff;
+}
+
+.footer-icons a {
+    color: #ffffff;
+}
+
+#subscribeEmail {
+    border-radius: 0;
+}
+*/
+/* Learn More Button Styles */
+
+
+.u-btn-2 {
+    border: 1px solid rgba(166, 42, 42, 0.55);
+    border-radius: 5px;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.u-btn-2:hover {
+    background-color: #99580e;
+    color: #fff;
+}
+
+/* Responsive Styles */
+
+/*
+@media (max-width: 768px) {
+    .navbar-nav {
+        margin-top: 10px;
+    }
+
+    .navbar-brand {
+        margin-top: 10px;
+    }
+}*/
+
+
+
+
+
+
+
+
+
+/* Add animation classes */
+
+.slide-from-left {
+        animation: slideFromLeft 1s ease-out;
+    }
+
+    .slide-from-right {
+        animation: slideFromRight 1s ease-out;
+    }
+
+    @keyframes slideFromLeft {
+        from {
+            transform: translateX(-100%);
+        }
+        to {
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes slideFromRight {
+        from {
+            transform: translateX(100%);
+        }
+        to {
+            transform: translateX(0);
+        }
+    }
+
