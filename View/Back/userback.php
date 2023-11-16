@@ -220,7 +220,7 @@ $users = $user1->Getuser();
     <div class="update-user-form" style="width: 500px" >
         <form method="POST" action="">
             <label for="id_user_update">ID User:</label>
-            <input type="text" id="id_user_update" name="id_user" required>
+            <input type="text" id="id_user_update" name="id_user"  required>
             <label for="nom_update">Nom:</label>
             <input type="text" id="nom_update" name="nom" required>
             <label for="email_update">Email:</label>
