@@ -4,22 +4,56 @@ include '../model/article.php';
 
 
 
-$error = "";
+/*$error = "";
 
 // create client
-$article = null;
+
 
 // create an instance of the controller
-
-if (
-    isset($_POST["categorie"]) &&
-    isset($_POST["titre"]) &&
-    isset($_POST["date_creation"]) &&
-    isset($_POST["date_modification"]) &&
-    isset($_POST["nomprenom_artiste"])&&
-    isset($_POST["contenu"])
-) {
-    if (
+if (isset($_GET['id_art'])) {
+  $id_art = $_GET['id_art'];
+  $article = $reclamationC->showrArticle($id_art);
+} else {
+  $article = null; // for adding new article
+}*/
+// if (
+//     isset($_POST["categorie"]) &&
+//     isset($_POST["titre"]) &&
+//     isset($_POST["date_creation"]) &&
+//     isset($_POST["date_modification"]) &&
+//     isset($_POST["nomprenom_artiste"])&&
+//     isset($_POST["contenu"])
+// ) {
+//   $article=Null;
+//   $articleA=new articleA;  
+// $article = new article(
+//   null,
+//   $_POST['categorie'],
+//   $_POST['titre'],
+//   $_POST['date_creation'],
+//   $_POST['date_modification'],
+//   $_POST['nomprenom_artiste'],
+//   $_POST['contenu'],
+// );
+// $articleA->addArticle($article);
+// $get_cat_article=(string) $_GET('categorie');
+// if ($get_id_article=="tableau"){
+//   header('Location:tab.php');
+// }
+// if ($get_cat_article=="monument"){
+//   header('Location:mon.php');
+// }
+// if($get_cat_article=="livre"){
+//   header('Location:lvr.php');
+// }
+// if($get_cat_article=="vetement"){
+//   header('Location:vt.php');
+// }
+// if($get_cat_article=="ville"){
+//   header('Location:vl.php');
+// }
+//}
+    /*if (
         !empty($_POST['categorie']) &&
         !empty($_POST["titre"]) &&
         !empty($_POST["date_creation"]) &&
@@ -27,7 +61,22 @@ if (
         !empty($_POST["nomprenom_artiste"])&&
         !empty($_POST["contenu"])
     ) {
-        $article = new article(
+      if ($article) {
+        // Update existing article']);
+        $article->setcategorie($_POST['categorie']);
+        $article->settitre($_POST['titre']);
+        $article->setdate_creation($_POST['date_creation']);
+        $article->setdate_modification($_POST['date_modification']);
+        $article->setnomprenom_artist($_POST['nomprenom_artiste']);
+        $article->setcontenu($_POST['contenu']);
+
+
+        $articleA->updateArticle($article, $id_art);
+      }
+
+        else{
+          // Add new article
+          $article = new article(
             null,
             $_POST['categorie'],
             $_POST['titre'],
@@ -37,16 +86,41 @@ if (
             $_POST['contenu'],
         );
         $articleA->addArticle($article);
+        }
         header('Location:tab.php');
     } else
         $error = "Missing information";
+}*/
+// Add new article
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  if (isset($_POST['add'])) {
+      // Handle signup form submission
+      
+      $categorie = $_POST['categorie'];
+      if ($categorie=="tableau"){
+          $titre = $_POST['titre'];
+          $nomprenom_artiste = $_POST['nomprenom_artiste'];
+          $contenu = $_POST['contenu'];
+          $article= new articleA;
+          $article->addArticle(NULL,$categorie,$titre,$nomprenom_artiste,$contenu);
+          header('location:tab.php');
+         }
+      else{$titre = $_POST['titre'];
+        $nomprenom_artiste = $_POST['nomprenom_artiste'];
+        $contenu = $_POST['contenu'];
+        $article= new articleA;
+        $article->addArticle(NULL,$categorie,$titre,$nomprenom_artiste,$contenu);
+        header('location:vt.php');
+
+      }
+     
+  }
+  //else if()
 }
-
-
-
-
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -167,8 +241,41 @@ if (
     </nav>
     <!-- Close Header -->
     <!-- les images en haut -->
+    <script>
+         function myFunction1() {
+  var input, filter, ul, li, a, i;
+  input = document.getElementById("mySearch");
+  filter = input.value.toUpperCase();
+  ul = document.getElementById("myMenu");
+  li = ul.getElementsByTagName("li");
+  for (i = 0; i < li.length; i++) {
+    a = li[i].getElementsByTagName("a")[0];
+    if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+      }
+    }
     
-  
+}
+    </script>
+   <script>
+    function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+}
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+}
+function openImg(imgName) {
+  var i, x;
+  x = document.getElementsByClassName("picture");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  document.getElementById(imgName).style.display = "block";
+}
+
+   </script>
     <div class="w3-sidebar w3-bar-block w3-dark-grey w3-animate-left" style="display:none" id="mySidebar">
       <button class="w3-bar-item w3-button w3-large" 
       onclick="w3_close()">Close &times;</button>
@@ -228,12 +335,27 @@ if (
     
     </div>
     <script>
-     
+     document.getElementsByClassName("tablink")[0].click();
+      
+      function openCity(evt, cityName) {
+        var i, x, tablinks;
+        x = document.getElementsByClassName("city");
+        for (i = 0; i < x.length; i++) {
+          x[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablink");
+        for (i = 0; i < x.length; i++) {
+          tablinks[i].classList.remove("w3-light-grey");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.classList.add("w3-light-grey");
+      }
+      
       </script>    
 
 
 
-</script>
+
     <div style="text-align:center">
       <div class="w3-panel w3-leftbar w3-light-grey">
         <p class="w3-xlarge w3-serif"><i>“L’art de plaire est l’art de tromper.”</i><br></p>
@@ -387,10 +509,8 @@ if (
               <div class="reply-form">
                 <h4 id="ajart">Ajouter un article</h4>
                 
-                <div id="error">
-                    <?php echo $error; ?>
-                </div>
-                <form action="" method="POST" id="artBtn">
+                
+                <form  action="" method="POST" id="artBtn">
                   <div class="row">
                     <div class="col-md-6 form-group">
                     <select class="form-control" id="cat" type= "text" name="categorie">         
@@ -429,11 +549,12 @@ if (
                     </div>
                   </div>
                   <div>
-                    <button  type="submit" value="Save" class="btn btn-primary" style="background-color:green; " onclick="valide ()">Poster article <a href="#article">+</a></button>
+                    <button id="buttonId" onclick=""  type="submit" name="add" value="Save" class="btn btn-primary" style="background-color:green; " >Poster article</button>
                   </div>
                   
                   
                 </form>
+               
 
               </div>
 
@@ -485,7 +606,21 @@ if (
 
 
 <script>
-     
+     function categories() {
+  var input, filter, ul, li, a, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  div = document.getElementById("myDIV");
+  a = div.getElementsByTagName("a");
+  for (i = 0; i < a.length; i++) {
+    txtValue = a[i].textContent || a[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      a[i].style.display = "";
+    } else {
+      a[i].style.display = "none";
+    }
+  }
+}
 </script>
 </div>
     </section><!-- End Blog Single Section -->
@@ -586,7 +721,52 @@ if (
 
 </footer>
 <!-- End Footer -->
+<script>
+       document.getElementById('artBtn').addEventListener('submit', function (event) {
+    var category = document.getElementById('cat').value;
+    var title = document.getElementById('title').value;
+    var dateCreation = document.getElementById('dc').value;
+    var dateModification = document.getElementById('dm').value;
+    var artistName = document.getElementById('nom').value;
+    var articleContent = document.getElementById('art').value;
 
+    // Reset error messages
+    document.getElementById('msg3').textContent = '';
+    document.getElementById('msg4').textContent = '';
+    document.getElementById('msg7').textContent = '';
+    document.getElementById('msg8').textContent = '';
+  
+    // Check if category is selected
+    if (category === '') {
+        document.getElementById('msg3').textContent = 'Please select a category.';
+        event.preventDefault();
+    }
+
+    // Check if title is filled and contains only alphabetic characters
+    if (title === '' || !/^[a-zA-Z]+$/.test(title)) {
+        document.getElementById('msg4').textContent = 'Please enter a valid title with only alphabetical characters.';
+        event.preventDefault();
+    }
+
+    // You can add more validation for date fields, and other fields as needed
+
+    // Check if artist name is filled and contains only alphabetic characters
+    if (artistName === '' || !/^[a-zA-Z]+$/.test(artistName)) {
+        document.getElementById('msg7').textContent = 'Please enter a valid artist\'s name with only alphabetical characters.';
+        event.preventDefault();
+    }
+
+    // Check if article content is filled
+    if (articleContent === '') {
+        document.getElementById('msg8').textContent = 'Please enter your article content.';
+        event.preventDefault();
+    }
+});
+
+</script>
+
+
+</script>
 <!-- Start Script -->
 <script src="assets/js/jquery-1.11.0.min.js"></script>
 <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
@@ -608,55 +788,6 @@ if (
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-  <script>
-    /*const element = document.getElementById("myBtn");
-element.addEventListener("submit", function(e){e.preventDefault()
-    var ch=document.getElementById("noun").value;
-    var i=0;
-    var test=true
-    if(ch.length<1)
-    {
-        test==false
-    }
-    do{
-        if (("a">ch.slice(i) || ch.slice(i)>"z")&&("A">ch.slice(i) || ch.slice(i)>"Z")){
-            test=false
-            
-        }
-        else {
-            i++;
-        }
+  
 
-    }while((test==true)&&(i<ch.length))
-    if(test==false)
-    {
-        document.getElementById("msg1").innerHTML ="veuller entrer un nom valide (lettre uniquement)"
-        document.getElementById("msg1").style.color="red"
-
-    }
-    else{
-        document.getElementById("msg1").innerHTML ="correct"
-        document.getElementById("msg1").style.color="green"
-    }
-    i=0;
-    test=true
-    ch=document.getElementById("cmnt").value;
-    if(ch.length<1)
-    {
-        test==false
-        document.getElementById("msg2").innerHTML ="veuller entrer commentaire"
-        document.getElementById("msg2").style.color="red"
-
-    }
-    else{
-        document.getElementById("msg2").innerHTML ="correct"
-        document.getElementById("msg2").style.color="green"
-    }
     
-});*/
-
-   </script>
-
-</body>
-
-</html>

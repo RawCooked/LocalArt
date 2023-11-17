@@ -7,43 +7,23 @@ $error = "";
 $article = null;
 // create an instance of the controller
 $articleA = new articleA();
-  if (
-      isset($_POST["categorie"]) &&
-      isset($_POST["titre"]) &&
-      isset($_POST["date_creation"]) &&
-      isset($_POST["date_modification"]) &&
-      isset($_POST["nomprenom_artiste"])&&
-      isset($_POST["contenu"])
-  ) {
-      if (
-          !empty($_POST['categorie']) &&
-          !empty($_POST["titre"]) &&
-          !empty($_POST["date_creation"]) &&
-          !empty($_POST["date_modification"])&&
-          !empty($_POST["nomprenom_artiste"])&&
-          !empty($_POST["contenu"])
-      ) {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST['upt'])) {
+        // Handle signup form submission
         foreach ($_POST as $key => $value) {
             echo "Key: $key, Value: $value<br>";
         }
-        $article = new article(
-            null,
-            $_POST['categorie'],
-            $_POST['titre'],
-            $_POST['date_creation'],
-            $_POST['date_modification'],
-            $_POST['nomprenom_artiste'],
-            $_POST['contenu']
-        );
-        var_dump($article);
+            $categorie = $_POST['categorie'];
+            $titre = $_POST['titre'];
+            $nomprenom_artiste = $_POST['nomprenom_artiste'];
+            $contenu = $_POST['contenu'];
+            $article= new articleA;
+            $articleA->updateArticle($article, $_POST['id_art']);
+            header('location:tab.php');
         
-        $joueurC->updateArticle($article, $_POST['id_art']);
-
-        header('Location:tab.php');
-    } else
-        $error = "Missing information";
-}
-
+        }
+    }
+  
 
 
 ?>
@@ -59,14 +39,13 @@ $articleA = new articleA();
     <button><a href="tab.php">Back to list</a></button>
     <hr>
 
-    <div id="error">
-        <?php echo $error; ?>
-    </div>
+    
 
     <?php
-    if (isset($_POST['id_art'])) {
-        $joueur = $joueurC->showArticle($_POST['id_art']);
+   if (isset($_POST['id_art'])) {
+        /*$article = $articleA->showArticle($_POST['id_art']);*/
         
+        $article=$articleA->showArticle($_POST['id_art']);}
     ?>
 
         <form action="" method="POST">
@@ -122,7 +101,7 @@ $articleA = new articleA();
                 </tr>
 
                 <td>
-                    <input type="submit" value="Save">
+                    <input type="submit" name="upt" value="Save">
                 </td>
                 <td>
                     <input type="reset" value="Reset">
@@ -131,7 +110,7 @@ $articleA = new articleA();
 
         </form>
     <?php
-    }
+    
     ?>
 </body>
 

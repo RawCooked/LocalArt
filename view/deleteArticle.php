@@ -1,5 +1,6 @@
 <?php
 include '../controller/articleA.php';
-$clientC = new articleA();
-$clientC->deleteArticle($_GET["id_art"]);
+$articleA = new articleA();
+$articleA->deleteArticle($_GET["id_art"]);
 header('Location:tab.php');
+?>

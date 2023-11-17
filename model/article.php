@@ -1,15 +1,14 @@
 <?php
+//require '../config.php';
 class article
 {
-    private ?int $id_art = null;
-    private ?string $categorie = null;
-    private ?string $titre = null;
-    private ?string $date_creation = null;
-    private ?string $date_modification = null;
-    private ?string $nomprenom_artiste = null;
-    private ?string $contenu = null;
+    private ?int $id_art= null ;
+    private ?string $categorie= null ;
+    private ?string $titre= null ;
+    private ?string $nomprenom_artiste= null ;
+    private ?string $contenu= null ;
 
-    public function __construct($id = null, $ca, $t,$dc,$dm,$n,$c,)
+     public function __construct($id= null , $ca, $t,$dc,$dm,$n,$c,)
     {
         $this->id_art = $id;
         $this->categorie = $ca;
@@ -19,7 +18,7 @@ class article
         $this->nomprenom_artiste = $n;
         $this->contenu = $c;
     }
-
+ 
 
     public function getid_art()
     {
@@ -95,11 +94,21 @@ class article
     {
         return $this->nomprenom_artiste;
     }
-    public function setnomprenom_artist($nomprenom_artist)
+    public function setnomprenom_artist($nomprenom_artiste)
     {
         $this->nomprenom_artist = $nomprenom_artist;
 
         return $this;
     }
+
+/*
+$article= new article;
+$liste=$article->listArticles();
+foreach($liste as $list){
+    echo($list["titre"]);
+    echo "<hr>";
+*/
+
+
 }
 ?>
