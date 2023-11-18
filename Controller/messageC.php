@@ -2,7 +2,7 @@
 
 require '../config.php';
 include_once '../Model/message.php';
-class messageC extends message
+class messageC
 {
     public function listmessages()
     {
@@ -31,19 +31,20 @@ class messageC extends message
     }
 
 
-    function addmessage($message,$text)
+    function addmessage($message)
     {
         $sql = "INSERT INTO messages  
-        VALUES (NULL, :idcon,:idu, :mess,:sent)";
+        VALUES (NULL, :idcon,:idu, :mess,:sent,:type,:sent_by)";
         $db = config::getConnexion();
         try {
             $query = $db->prepare($sql);
             $query->execute([
                 'idcon' => $message->getIdconversation(),
                 'idu' => $message->getIdutilisateur(),
-                'mess' => $text,
+                'mess' => $message->getMessagee(),
                 'sent' => $message->getsent(),
-            ]);
+                'type'=>$message->gettype(),
+                'sent_by'=>$message->getsent_by()]);    
         } catch (Exception $e) {
             echo 'Error: ' . $e->getMessage();
         }
@@ -73,7 +74,9 @@ class messageC extends message
                     idcon = :idcon, 
                     idu = :idu, 
                     mess = :mess, 
-                    sent = :sent
+                    sent = :sent,
+                    type = :type,
+                    sent_by=:sent_by
                 WHERE id= :id'
             );
             
@@ -83,11 +86,31 @@ class messageC extends message
                 'idu' => $message->getIdutilisateur(),
                 'mess' => $message->getIdmessage(),
                 'sent' => $message->getsent(),
-            ]);
-            
+                'type'=>$message->gettype(),
+                'sent_by'=>$message->getsent_by()]);            
             echo $query->rowCount() . " records UPDATED successfully <br>";
         } catch (PDOException $e) {
             $e->getMessage();
+        }
+    }
+    public function getSubjectsBySubject()
+    {
+       /* $sql = "SELECT sujet, COUNT(*) AS nombre FROM reclamation GROUP BY sujet";*/
+       $sql = "SELECT
+       sujet,
+       COUNT(*) AS nombreMess
+   FROM messages
+   WHERE sujet IN ('Signaler un texte abus', 'Signaler un problème', 'autres')
+   GROUP BY sujet";
+        $db = config::getConnexion();
+        try {
+            $statement = $db->query($sql);
+            $data = $statement->fetchAll(PDO::FETCH_ASSOC);
+            header('Content-Type: application/json');
+            echo json_encode($data);
+        } catch (PDOException $e) {
+            header('HTTP/1.1 500 Internal Server Error');
+            echo json_encode(["error" => "Internal Server Error"]);
         }
     }
 }

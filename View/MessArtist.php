@@ -8,7 +8,7 @@ if (
   isset($_POST["message"]) && !empty($_POST["message"])
 ) {
   $messContent=$_POST["message"];
-  $messC = new message(NULL, 455, 105 , $messContent , date("h:i"),"s","c");
+  $messC = new message(NULL, 455, 105 , $messContent , date("h:i"),"s","a");
   $msgC->addmessage($messC);
 }else{
   echo "missing";
