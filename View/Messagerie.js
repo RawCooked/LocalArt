@@ -48,7 +48,8 @@ msgerForm.addEventListener("submit", event => {
     `;
   
     msgerChat.insertAdjacentHTML("beforeend", msgHTML);
-    msgerChat.scrollTop += 500;    
+    msgerChat.scrollTop += 500; 
+    return (date);   
   }
   function get(selector, root = document) {
     return root.querySelector(selector);

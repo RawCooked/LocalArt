@@ -7,7 +7,7 @@ if (
   isset($_POST["message"]) && !empty($_POST["message"])
 ) {
   $messContent=$_POST["message"];
-  $messC = new message(NULL, 455, 105 , $messContent , date("h:i"),"c");
+  $messC = new message(NULL, 455, 105 , $messContent , date("h:i"),"c"); //c: client/a:artiste
   $msgC->addmessage($messC);
 }else{
   echo "missing";
@@ -35,17 +35,21 @@ if (
             </header>
           
             <main class="msger-chat" id="messages">
-      <?php if (isset($messContent)) { ?>
-      <div class="<?php echo "msg right-msg";?>"> 
+            <?php if (isset($messContent)) { ?>
+        <script>
+          appendMessage('saif',"assets/img/bg-showcase-1.jpg","right",<?=$messContent?>);
+        </script>
+        <!--
+      <div class="<?php //echo "msg right-msg";?>"> 
         <div class="msg-bubble">
           <div class="msg-info">
             <div class="msg-info-name">test</div>
             <div class="msg-info-time">test</div>
           </div>
   
-          <div class="msg-text"><?php echo $messContent;//unset($_POST); ?></div>
+          <div class="msg-text"><?php //echo $messContent;//unset($_POST); ?></div>
         </div>
-      </div>
+      </div>-->
       <?php  } ?>
             </main>
           
@@ -57,7 +61,7 @@ if (
           <script>
             setInterval('load_messages()',50);
             function load_messages(){
-                $('#messages').load('loadMessC.php');
+                $('#messages').load('loadMessC.php'); //C A
             }
           </script>
     </body>
