@@ -34,7 +34,7 @@ class messageC
     function addmessage($message)
     {
         $sql = "INSERT INTO messages  
-        VALUES (NULL, :idcon,:idu, :mess,:sent,:type,:sent_by)";
+        VALUES (NULL, :idcon,:idu, :mess,:sent,:sent_by)";
         $db = config::getConnexion();
         try {
             $query = $db->prepare($sql);
@@ -43,7 +43,6 @@ class messageC
                 'idu' => $message->getIdutilisateur(),
                 'mess' => $message->getMessagee(),
                 'sent' => $message->getsent(),
-                'type'=>$message->gettype(),
                 'sent_by'=>$message->getsent_by()]);    
         } catch (Exception $e) {
             echo 'Error: ' . $e->getMessage();
@@ -75,7 +74,6 @@ class messageC
                     idu = :idu, 
                     mess = :mess, 
                     sent = :sent,
-                    type = :type,
                     sent_by=:sent_by
                 WHERE id= :id'
             );
@@ -86,7 +84,6 @@ class messageC
                 'idu' => $message->getIdutilisateur(),
                 'mess' => $message->getIdmessage(),
                 'sent' => $message->getsent(),
-                'type'=>$message->gettype(),
                 'sent_by'=>$message->getsent_by()]);            
             echo $query->rowCount() . " records UPDATED successfully <br>";
         } catch (PDOException $e) {

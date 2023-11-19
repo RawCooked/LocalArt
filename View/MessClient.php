@@ -1,14 +1,13 @@
 <?php
 include '../Controller/messageC.php';
 $msgC= new messageC(); 
-$list =  $msgC->listmessages();
 if (isset($_POST["send"]))
 {
 if (
   isset($_POST["message"]) && !empty($_POST["message"])
 ) {
   $messContent=$_POST["message"];
-  $messC = new message(NULL, 455, 105 , $messContent , date("h:i"),"s","c");
+  $messC = new message(NULL, 455, 105 , $messContent , date("h:i"),"c");
   $msgC->addmessage($messC);
 }else{
   echo "missing";
@@ -20,8 +19,9 @@ if (
     <head>
         <meta charset="utf-8">
         <title>Messagerie/Client</title>
-        <link rel="stylesheet" href="MessClient.css">
-        <script>src="MessClient.js"</script>
+        <link rel="stylesheet" href="Messagerie.css">
+        <script>src="Messagerie.js"</script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     </head>
     <body>
         <section class="msger">
@@ -34,32 +34,9 @@ if (
               </div>
             </header>
           
-            <main class="msger-chat">
-              
- <?php foreach ($list as $l ) { 
-  if ($l['type']==='r')
-  { 
-    $side='left';
-  }
-  else if ($l['type']==='s')
-  {
-    $side='right';
-  }
-?>
-
-  <div class="<?php echo "msg $side-msg";?>">
-        <div class="msg-bubble">
-          <div class="msg-info">
-            <div class="msg-info-name">test</div>
-            <div class="msg-info-time">test</div>
-          </div>
-  
-          <div class="msg-text"><?php echo $l['mess'] ?></div>
-        </div>
-      </div>
-      <?php  } ?>
+            <main class="msger-chat" id="messages">
       <?php if (isset($messContent)) { ?>
-      <div class="<?php echo "msg $side-msg";?>"> 
+      <div class="<?php echo "msg right-msg";?>"> 
         <div class="msg-bubble">
           <div class="msg-info">
             <div class="msg-info-name">test</div>
@@ -70,7 +47,6 @@ if (
         </div>
       </div>
       <?php  } ?>
-
             </main>
           
           <form class="msger-inputarea" method="POST" action="">
@@ -78,8 +54,11 @@ if (
               <button type="submit" class="msger-send-btn" name="send">Send</button>
             </form>
           </section>
-          <?php
-
-          ?>
+          <script>
+            setInterval('load_messages()',50);
+            function load_messages(){
+                $('#messages').load('loadMessC.php');
+            }
+          </script>
     </body>
 </html>

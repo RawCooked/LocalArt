@@ -5,17 +5,15 @@ class message {
     private ?int $id_utilisateur =null;
     private ?string $message=null;
     private ?string $sent_at =null;
-    private ?string $type=null;
     private ?string $sent_by=null;
 
-    public function __construct($idc = null, $ida = null, $idcl = null,$message, $s,$t,$sen)
+    public function __construct($idc = null, $ida = null, $idcl = null,$message, $s,$sen)
     {
         $this->id_message = $idc;
         $this->id_conversation = $ida;
         $this->id_utilisateur =$idcl;
         $this->message=$message;
         $this->sent_at = $s; //sent
-        $this->type=$t;
         $this->sent_by=$sen;
     }
 
@@ -56,16 +54,6 @@ class message {
         return $this->sent_at;
     }
 
-    public function settype($type)
-    {
-        $this->type = $type;
-        return $this->type;
-    }
-
-    public function gettype()
-    {
-        return $this->type;
-    }
 
     public function setsent_by($sen)
     {
