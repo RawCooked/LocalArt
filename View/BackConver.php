@@ -15,7 +15,7 @@ $tab = $c->listmessages();
         <th>message</th>
         <th>Time sent</th>
         <th>sent_by</th>
-        <!--<th>Delete</th>-->
+        <th>Delete</th>
     </tr>
 
     <?php
@@ -34,12 +34,27 @@ $tab = $c->listmessages();
                     <input type="submit" name="update" value="Update">
                     <input type="hidden" value=<?PHP // echo $message['id']; ?> name="id">
                 </form>
-            </td>
-            <td>
-                <a href="deletemessage*.php?id=<?php //$message['id']; ?>">Delete</a>
             </td>-->
+            <td>
+                <a href="deletemessage.php?idm=<?=$message['idm']; ?>">Delete</a>
+            </td>
         </tr>
     <?php
     }
     ?>
+</table>
+<center>
+    <h1>number of Messages</h1>
+</center>
+<table border="1" align="center" width="70%">
+    <tr>
+        <th>Totale de Messages</th>
+        <th>Nombres Messages Clients</th>
+        <th>Nombres Messages Artistes</th>
+    </tr>
+    <tr>
+        <td><?=$c->countmessages();?></td>
+        <td><?=$c->countmessagesA_C('c'); ?></td>
+        <td><?=$c->countmessagesA_C('a');?></td>
+    </tr>
 </table>

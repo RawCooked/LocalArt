@@ -109,7 +109,32 @@ class messageC
     }
 }
 
-    public function getSubjectsBySubject()
+
+function countmessagesA_C($sent_by)
+{
+    $select="SELECT * FROM messages WHERE sent_by =$sent_by";
+    $sql = "SELECT COUNT(*) as nbre FROM $select";
+    $db = config::getConnexion();
+    try {
+        $query = $db->prepare($sql);
+        $query->execute();
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+        if ($result !== false) {
+            return $result['nbre'];
+        } else {
+            
+            return 0;
+        }
+    } catch (Exception $e) {
+        die('Error: ' . $e->getMessage());
+    }
+}
+
+
+}
+
+
+    function getSubjectsBySubject()
     {
        /* $sql = "SELECT sujet, COUNT(*) AS nombre FROM reclamation GROUP BY sujet";*/
        $sql = "SELECT
@@ -129,4 +154,3 @@ class messageC
             echo json_encode(["error" => "Internal Server Error"]);
         }
     }
-}
