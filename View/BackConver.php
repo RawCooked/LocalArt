@@ -42,18 +42,4 @@ $tab = $c->listmessages();
     }
     ?>
 </table>
-<center>
-    <h1>number of Messages</h1>
-</center>
-<table border="1" align="center" width="70%">
-    <tr align="center">
-        <th>Totale de Messages</th>
-        <th>Nombres Messages Clients</th>
-        <th>Nombres Messages Artistes</th>
-    </tr>
-    <tr align="center">
-        <td><?=$c->countmessages();?></td>
-        <td><?=$c->countmessagesA_C('c'); ?></td>
-        <td><?=$c->countmessagesA_C('a');?></td>
-    </tr>
-</table>
+

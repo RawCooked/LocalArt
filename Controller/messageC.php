@@ -34,7 +34,7 @@ class messageC
     function addmessage($message)
     {
         $sql = "INSERT INTO messages  
-        VALUES (NULL, :idcon,:idu, :mess,:sent,:sent_by)";
+        VALUES (NULL, :idcon,:idu, :mess,:sent,:state)";
         $db = config::getConnexion();
         try {
             $query = $db->prepare($sql);
@@ -43,7 +43,7 @@ class messageC
                 'idu' => $message->getIdutilisateur(),
                 'mess' => $message->getMessagee(),
                 'sent' => $message->getsent(),
-                'sent_by'=>$message->getsent_by()]);    
+                'state'=>$message->getstate()]);    
         } catch (Exception $e) {
             echo 'Error: ' . $e->getMessage();
         }
@@ -74,7 +74,7 @@ class messageC
                     idu = :idu, 
                     mess = :mess, 
                     sent = :sent,
-                    sent_by=:sent_by
+                    state=:state
                 WHERE id= :id'
             );
             
@@ -84,47 +84,13 @@ class messageC
                 'idu' => $message->getIdutilisateur(),
                 'mess' => $message->getIdmessage(),
                 'sent' => $message->getsent(),
-                'sent_by'=>$message->getsent_by()]);            
+                'state'=>$message->getstate()]);            
             echo $query->rowCount() . " records UPDATED successfully <br>";
         } catch (PDOException $e) {
             $e->getMessage();
         }
     }
-    function countmessages()
-{
-    $sql = "SELECT COUNT(*) as nbre FROM messages";
-    $db = config::getConnexion();
-    try {
-        $query = $db->prepare($sql);
-        $query->execute();
-        $result = $query->fetch(PDO::FETCH_ASSOC);
-        if ($result !== false) {
-            return $result['nbre'];
-        } else {
-            
-            return 0;
-        }
-    } catch (Exception $e) {
-        die('Error: ' . $e->getMessage());
-    }
-}
 
-
-function countmessagesA_C($sent_by)
-{
-    $sql = "SELECT COUNT(*)
-    FROM messages
-    WHERE sent_by = $sent_by";
-    $db = config::getConnexion();
-    try {
-        $query = $db->prepare($sql);
-        $query->execute();
-        $nbr = $query->fetch();
-        return $nbr;
-    } catch (Exception $e) {
-        die('Error: ' . $e->getMessage());
-    }
-}
 
 }
 

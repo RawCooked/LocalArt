@@ -5,16 +5,16 @@ class message {
     private ?int $id_utilisateur =null;
     private ?string $message=null;
     private ?string $sent_at =null;
-    private ?string $sent_by=null;
+    private ?string $state=null;
 
-    public function __construct($idc = null, $ida = null, $idcl = null,$message, $s,$sen)
+    public function __construct($idc = null, $ida = null, $idcl = null,$message, $s,$st)
     {
         $this->id_message = $idc;
         $this->id_conversation = $ida;
         $this->id_utilisateur =$idcl;
         $this->message=$message;
         $this->sent_at = $s; //sent
-        $this->sent_by=$sen;
+        $this->state=$st;
     }
 
     public function getIdmessage()
@@ -54,16 +54,15 @@ class message {
         return $this->sent_at;
     }
 
-
-    public function setsent_by($sen)
+    public function setstate($sen)
     {
-        $this->sent_by = $sen;
-        return $this->sent_by;
+        $this->state = $sen;
+        return $this->state;
     }
 
-    public function getsent_by()
+    public function getstate()
     {
-        return $this->sent_by;
+        return $this->state;
     }
 }
 ?>
