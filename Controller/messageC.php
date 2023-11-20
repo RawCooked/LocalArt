@@ -90,6 +90,25 @@ class messageC
             $e->getMessage();
         }
     }
+    function countmessages()
+{
+    $sql = "SELECT COUNT(*) as nbre FROM messages";
+    $db = config::getConnexion();
+    try {
+        $query = $db->prepare($sql);
+        $query->execute();
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+        if ($result !== false) {
+            return $result['nbre'];
+        } else {
+            
+            return 0;
+        }
+    } catch (Exception $e) {
+        die('Error: ' . $e->getMessage());
+    }
+}
+
     public function getSubjectsBySubject()
     {
        /* $sql = "SELECT sujet, COUNT(*) AS nombre FROM reclamation GROUP BY sujet";*/
