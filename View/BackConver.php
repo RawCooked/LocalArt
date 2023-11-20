@@ -8,7 +8,7 @@ $tab = $c->listmessages();
     <h1>List of Messages</h1>
 </center>
 <table border="1" align="center" width="70%">
-    <tr>
+    <tr align="center">
         <th>Id message</th>
         <th>Id conversation</th>
         <th>Id utilisateur</th>
@@ -17,11 +17,10 @@ $tab = $c->listmessages();
         <th>sent_by</th>
         <th>Delete</th>
     </tr>
-
     <?php
     foreach ($tab as $message) {
     ?>
-        <tr>
+        <tr align="center">
             <td><?= $message['idm']; ?></td>
             <td><?= $message['idcon']; ?></td>
             <td><?= $message['idu']; ?></td>
@@ -47,12 +46,12 @@ $tab = $c->listmessages();
     <h1>number of Messages</h1>
 </center>
 <table border="1" align="center" width="70%">
-    <tr>
+    <tr align="center">
         <th>Totale de Messages</th>
         <th>Nombres Messages Clients</th>
         <th>Nombres Messages Artistes</th>
     </tr>
-    <tr>
+    <tr align="center">
         <td><?=$c->countmessages();?></td>
         <td><?=$c->countmessagesA_C('c'); ?></td>
         <td><?=$c->countmessagesA_C('a');?></td>

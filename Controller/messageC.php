@@ -112,24 +112,19 @@ class messageC
 
 function countmessagesA_C($sent_by)
 {
-    $select="SELECT * FROM messages WHERE sent_by =$sent_by";
-    $sql = "SELECT COUNT(*) as nbre FROM $select";
+    $sql = "SELECT COUNT(*)
+    FROM messages
+    WHERE sent_by = $sent_by";
     $db = config::getConnexion();
     try {
         $query = $db->prepare($sql);
         $query->execute();
-        $result = $query->fetch(PDO::FETCH_ASSOC);
-        if ($result !== false) {
-            return $result['nbre'];
-        } else {
-            
-            return 0;
-        }
+        $nbr = $query->fetch();
+        return $nbr;
     } catch (Exception $e) {
         die('Error: ' . $e->getMessage());
     }
 }
-
 
 }
 
