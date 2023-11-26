@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9a6317c3-ff29-4094-a836-e9a62011830f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/View/Front/change_password.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/View/Front/forgot_password_key.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/View/Front/profile.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/userC.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/userC.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/Back/user_back.php" beforeDir="false" afterPath="$PROJECT_DIR$/View/Back/user_back.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/Back/userback.php" beforeDir="false" afterPath="$PROJECT_DIR$/View/Back/userback.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/Front/assets/js/login_head.js" beforeDir="false" afterPath="$PROJECT_DIR$/View/Front/assets/js/login_head.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/Front/assets/js/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/View/Front/assets/js/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/Front/forgot_password.php" beforeDir="false" afterPath="$PROJECT_DIR$/View/Front/forgot_password.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/Front/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/View/Front/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/Front/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/View/Front/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/Front/login_head.php" beforeDir="false" afterPath="$PROJECT_DIR$/View/Front/login_head.php" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/View/Back/users-profile.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP">
+    <include_path>
+      <path value="$PROJECT_DIR$/vendor/phpmailer/phpmailer" />
+      <path value="$PROJECT_DIR$/vendor/composer" />
+    </include_path>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2YTipHbH2pHN6tbHlcnDazPqVE4" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;idriss-user&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/xampp/htdocs/LocalArt/View/Front&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;,
+      &quot;oracle&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\LocalArt\View\Front" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9a6317c3-ff29-4094-a836-e9a62011830f" name="Changes" comment="" />
+      <created>1700556154967</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1700556154967</updated>
+      <workItem from="1700556155913" duration="186000" />
+      <workItem from="1700556923058" duration="141000" />
+      <workItem from="1700557084234" duration="1442000" />
+      <workItem from="1700645407883" duration="124000" />
+      <workItem from="1700645543486" duration="13983000" />
+      <workItem from="1700776346112" duration="15844000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>
