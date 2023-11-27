@@ -2,6 +2,7 @@
 include 'C:/xampp/htdocs/LocalArt/Controller/userC.php';
 
 
+
 ?>
 
 <!DOCTYPE html>
@@ -16,11 +17,18 @@ include 'C:/xampp/htdocs/LocalArt/Controller/userC.php';
 
 
 <div class="blurred-box">
-  <div class="user-login-box">
+  <div class="user-login-box" >
     <img src="assets/img/LocalArtlogo.png" style="height: 100px; width:100px;" alt="">
-    <div class="user-name">Enter your Email .</div>
-    <input class="user-password" type="text" />
-    <button type="submit">Check</button>
+
+    <div class="user-name"  >Enter your Email .</div>
+      <div class="check-mail">
+      <form method="POST" action="forgot_password_key.php">
+      <label>
+          <input placeholder="john@doe.com"  name="email" class="user-email" type="text"  required/>
+      </label>
+      <button type="submit" name="button" style="margin-top: 15px">Check</button>
+      </form>
+      </div>
   </div>
   
 </div>

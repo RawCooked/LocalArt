@@ -1,0 +1,11 @@
+{
+    "name": "pcg66/local-art",
+    "autoload": {
+        "psr-4": {
+            "Pcg66\\LocalArt\\": "src/"
+        }
+    },
+    "require": {
+        "phpmailer/phpmailer": "^6.8"
+    }
+}

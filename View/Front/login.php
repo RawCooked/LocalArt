@@ -1,4 +1,8 @@
 <?php
+session_start();
+
+session_destroy ();
+
 include 'C:/xampp/htdocs/LocalArt/Controller/userC.php';
 include 'login_head.php';
 ?>
@@ -29,7 +33,7 @@ include 'login_head.php';
             <label for="chk" style="padding-top:20px; margin-top:50px;" aria-hidden="true">Login</label>
             <input type="email" id="login-email" name="log-email" placeholder="Email">
             <input type="password" id="login-pswd" name="log-pswd" placeholder="Password">
-            <a href="forgot_password.php" class="fgp">Forget Password ?</a>
+            <a href="forgot_password_key.php" class="fgp">Forget Password ?</a>
             
             <button id="login-button"  name="login_button" onclick="return validateLoginForm()">Login</button>
             <div id="login-error" name="login" class="fgp"><?php echo isset($loginError) ? $loginError : ''; ?></div>

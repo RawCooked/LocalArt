@@ -1,3 +1,26 @@
+<?php
+// Start the session
+session_start();
+
+include 'C:/xampp/htdocs/LocalArt/Controller/userC.php';
+
+
+if (isset($_SESSION['user_id'])) {
+    $userId = $_SESSION['user_id'];
+
+} else {
+    header('Location: login.php');
+    exit;
+}
+
+$user1 = new userC();
+$userActual = $user1->getUserById($userId);
+
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,13 +39,112 @@
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
     <link rel="stylesheet" href="assets/css/fontawesome.min.css">
-<!--
-    
-TemplateMo 559 Zay Shop
+    <style>
+        .dropbtn {
+            background-color: #ffffff;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            transition: 500ms;
+        }
 
-https://templatemo.com/tm-559-zay-shop
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            transition: 500ms;
+        }
 
--->
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            transition: 500ms;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: 500ms;
+        }
+
+        .dropdown-content a:hover {background-color: #ddd; transition: 500ms;}
+
+        .dropdown:hover .dropdown-content {display: block;transition: 500ms;}
+
+        .dropdown:hover .dropbtn {background-color: #ffffff;transition: 500ms;}
+
+
+        .sidebar {
+            height: 100%; /* 100% Full-height */
+            width: 0; /* 0 width - change this with JavaScript */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Stay on top */
+            top: 0;
+            left: 0;
+            background-color: #111; /* Black*/
+            overflow-x: hidden; /* Disable horizontal scroll */
+            padding-top: 60px; /* Place content 60px from the top */
+            transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+        }
+
+        /* The sidebar links */
+        .sidebar a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+        /* When you mouse over the navigation links, change their color */
+        .sidebar a:hover {
+            color: #f1f1f1;
+        }
+
+        /* Position and style the close button (top right corner) */
+        .sidebar .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        /* The button used to open the sidebar */
+        .openbtn {
+            font-size: 20px;
+            cursor: pointer;
+            background-color: #111;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+        }
+
+        .openbtn:hover {
+            background-color: #444;
+        }
+
+        /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+        #main {
+            transition: margin-left .5s; /* If you want a transition effect */
+            padding: 20px;
+        }
+
+        /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+        @media screen and (max-height: 450px) {
+            .sidebar {padding-top: 15px;}
+            .sidebar a {font-size: 18px;}
+        }
+    </style>
+
+
 
 
 </head>
@@ -50,9 +172,14 @@ https://templatemo.com/tm-559-zay-shop
     <!-- Close Top Nav -->
 
 
+
     <!-- Header -->
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
+            <div id="main">
+                <button class="openbtn" onclick="openNav()">&#9776;</button>
+                
+            </div>
 
             <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
             LocalArt&nbsp; </a>
@@ -96,9 +223,20 @@ https://templatemo.com/tm-559-zay-shop
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                         <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
                     </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="login.php">
-                        <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
+
+                    <div id="mySidebar" class="sidebar">
+                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                        <a href="#"><?php echo $userActual['nom'] ?></a>
+                        <a href="profile.php">Profile</a>
+                        <a href="forgot_password_key.php">Change Password</a>
+                        <a href="">Delete Account</a>
+                        <a href="login.php">Log out</a>
+                    </div>
+
+
+
+
+
                     </a>
                 </div>
             </div>
@@ -431,6 +569,19 @@ https://templatemo.com/tm-559-zay-shop
     <script src="assets/js/custom.js"></script>
 
     <script src="assets/js/user.js"></script>
+    <script>
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+        }
+
+        /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+        }
+    </script>
+
     <!-- End Script -->
     
 </body>

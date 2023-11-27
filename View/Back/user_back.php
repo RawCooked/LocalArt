@@ -3,7 +3,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user1 = new userC();
 
     if (isset($_POST['addUser'])) {
-        $id_user = $_POST['id_user'];
+       
         $nom = $_POST['nom'];
         $email = $_POST['email'];
         $password = $_POST['password'];
@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        $user1->addUser($id_user, $nom, $email, $hashedPassword, $state);
+        $user1->addUser(0, $nom, $email, $hashedPassword, $state);
     } elseif (isset($_POST['deleteUserId'])) {
         $userId = $_POST['deleteUserId'];
         $user1->deleteUser($userId);

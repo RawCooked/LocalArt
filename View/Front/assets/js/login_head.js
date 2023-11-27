@@ -38,7 +38,7 @@
         return false;
       }
 
-      localStorage.setItem("user", username);
+      localStorage.setItem("name", 'username');
       
 
       return true;

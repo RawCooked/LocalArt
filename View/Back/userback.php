@@ -4,6 +4,7 @@ include 'user_back.php';
 
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,19 +13,20 @@ include 'user_back.php';
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
     <link rel='stylesheet' href="assets/css/style_userback.css">
 	<script src='assets/js/js_userback.js'></script>
+ 
 	
 </head>
 <body>
 
-<div class="container">
+<div class="container" >
     <h1>User Table</h1>
     <button class="add-user-button" onclick="toggleAddUserForm()">Add User</button>
+
 
     <!-- Add User Form -->
     <div class="add-user-form">
         <form method="POST" action="">
-            <label for="id_user">ID User:</label>
-            <input type="text" name="id_user" required>
+            <input type="hidden" name="id_user" required>
             <label for="nom">Nom:</label>
             <input type="text" name="nom" required>
             <label for="email">Email:</label>
@@ -42,7 +44,7 @@ include 'user_back.php';
     </div>
 
     <?php if (!empty($users)) { ?>
-        <table class="table table-striped">
+        <table class="table table-striped" border=2>
             <thead>
             <tr>
                 <th>ID User</th>
@@ -64,24 +66,26 @@ include 'user_back.php';
                     <td>
                         <form method="POST" action="">
                             <input type="hidden" name="deleteUserId" value="<?php echo $user['id_user']; ?>">
-                            <button class="delete-button" type="submit">Delete</button>
+                            <button class="delete-button"  type="submit">Delete</button>
                         </form>
-                        
-						<button class="update-button" data-user-id="<?php echo $user['id_user']; ?>">Update</button>
+                        <hr>
+						<button class="update-button" id="update_but"   data-user-id="<?php echo $user['id_user']; ?>">Update</button>
+                        <input type="hidden" class="placeinfo-nom" data-user-id="<?php echo $user['id_user']; ?>" value="<?php echo $user['nom']; ?>">
+                        <input type="hidden" class="placeinfo-email" data-user-id="<?php echo $user['id_user']; ?>" value="<?php echo $user['email']; ?>">
+                        <input type="hidden" class="placeinfo-password" data-user-id="<?php echo $user['id_user']; ?>" value="<?php echo $user['password']; ?>">
+                        <input type="hidden" class="placeinfo-state" data-user-id="<?php echo $user['id_user']; ?>" value="<?php echo $user['state']; ?>">
+
                     </td>
                 </tr>
+                
             <?php } ?>
             </tbody>
+            
+    
         </table>
-    <?php } else { ?>
-        <p>No users found.</p>
-    <?php } ?>
-
-    <!-- Update User Form -->
-    <div class="update-user-form" style="width: 5000px;"   >
+        <div class="update-user-form" style="width: 5000px;"   >
         <form method="POST" action="">
-            <label for="id_user_update">ID User:</label>
-            <input type="text" id="id_user_update" name="id_user"  required>
+            <input type="hidden" id="id_user_update" name="id_user"  required>
             <label for="nom_update">Nom:</label>
             <input type="text" id="nom_update" name="nom" required>
             <label for="email_update">Email:</label>
@@ -97,6 +101,12 @@ include 'user_back.php';
             <input type="submit" name="updateUser" value="Update User">
         </form>
     </div>
+    <?php } else { ?>
+        <p>No users found.</p>
+    <?php } ?>
+
+    <!-- Update User Form -->
+    
 </div>
 
 
