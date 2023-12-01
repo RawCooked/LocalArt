@@ -1,103 +1,16 @@
 <?php
 include '../controller/articleA.php';
-include '../model/article.php';
+//include '../model/article.php';
 
 
 
-/*$error = "";
 
-// create client
-
-
-// create an instance of the controller
-if (isset($_GET['id_art'])) {
-  $id_art = $_GET['id_art'];
-  $article = $reclamationC->showrArticle($id_art);
-} else {
-  $article = null; // for adding new article
-}*/
-// if (
-//     isset($_POST["categorie"]) &&
-//     isset($_POST["titre"]) &&
-//     isset($_POST["date_creation"]) &&
-//     isset($_POST["date_modification"]) &&
-//     isset($_POST["nomprenom_artiste"])&&
-//     isset($_POST["contenu"])
-// ) {
-//   $article=Null;
-//   $articleA=new articleA;  
-// $article = new article(
-//   null,
-//   $_POST['categorie'],
-//   $_POST['titre'],
-//   $_POST['date_creation'],
-//   $_POST['date_modification'],
-//   $_POST['nomprenom_artiste'],
-//   $_POST['contenu'],
-// );
-// $articleA->addArticle($article);
-// $get_cat_article=(string) $_GET('categorie');
-// if ($get_id_article=="tableau"){
-//   header('Location:tab.php');
-// }
-// if ($get_cat_article=="monument"){
-//   header('Location:mon.php');
-// }
-// if($get_cat_article=="livre"){
-//   header('Location:lvr.php');
-// }
-// if($get_cat_article=="vetement"){
-//   header('Location:vt.php');
-// }
-// if($get_cat_article=="ville"){
-//   header('Location:vl.php');
-// }
-//}
-    /*if (
-        !empty($_POST['categorie']) &&
-        !empty($_POST["titre"]) &&
-        !empty($_POST["date_creation"]) &&
-        !empty($_POST["date_modification"])&&
-        !empty($_POST["nomprenom_artiste"])&&
-        !empty($_POST["contenu"])
-    ) {
-      if ($article) {
-        // Update existing article']);
-        $article->setcategorie($_POST['categorie']);
-        $article->settitre($_POST['titre']);
-        $article->setdate_creation($_POST['date_creation']);
-        $article->setdate_modification($_POST['date_modification']);
-        $article->setnomprenom_artist($_POST['nomprenom_artiste']);
-        $article->setcontenu($_POST['contenu']);
-
-
-        $articleA->updateArticle($article, $id_art);
-      }
-
-        else{
-          // Add new article
-          $article = new article(
-            null,
-            $_POST['categorie'],
-            $_POST['titre'],
-            $_POST['date_creation'],
-            $_POST['date_modification'],
-            $_POST['nomprenom_artiste'],
-            $_POST['contenu'],
-        );
-        $articleA->addArticle($article);
-        }
-        header('Location:tab.php');
-    } else
-        $error = "Missing information";
-}*/
-// Add new article
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (isset($_POST['add'])) {
-      // Handle signup form submission
-      
+   
+          
       $categorie = $_POST['categorie'];
       if ($categorie=="tableau"){
           $titre = $_POST['titre'];
@@ -105,20 +18,55 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           $contenu = $_POST['contenu'];
           $article= new articleA;
           $article->addArticle(NULL,$categorie,$titre,$nomprenom_artiste,$contenu);
-          header('location:tab.php');
+          if ($article->checkTitleExists($titre)) {
+           echo '<script>alert("Le titre existe déjà dans la base de données.");</script>';
+          } 
+          else
+          {
+            header('location:listearttab.php');
+          }
+         
          }
-      else{$titre = $_POST['titre'];
-        $nomprenom_artiste = $_POST['nomprenom_artiste'];
-        $contenu = $_POST['contenu'];
-        $article= new articleA;
-        $article->addArticle(NULL,$categorie,$titre,$nomprenom_artiste,$contenu);
-        header('location:vt.php');
-
+        if ($categorie=="vetement"){
+          $titre = $_POST['titre'];
+          $nomprenom_artiste = $_POST['nomprenom_artiste'];
+          $contenu = $_POST['contenu'];
+          $article= new articleA;
+          $article->addArticle(NULL,$categorie,$titre,$nomprenom_artiste,$contenu);
+          header('location:listartvt.php');
+         }
+         if ($categorie=="monument"){
+          $titre = $_POST['titre'];
+          $nomprenom_artiste = $_POST['nomprenom_artiste'];
+          $contenu = $_POST['contenu'];
+          $article= new articleA;
+          $article->addArticle(NULL,$categorie,$titre,$nomprenom_artiste,$contenu);
+          header('location:listeartmon.php');
+         }
+         if ($categorie=="livre"){
+          $titre = $_POST['titre'];
+          $nomprenom_artiste = $_POST['nomprenom_artiste'];
+          $contenu = $_POST['contenu'];
+          $article= new articleA;
+          $article->addArticle(NULL,$categorie,$titre,$nomprenom_artiste,$contenu);
+          header('location:listeartlvr.php');
+         }
+         if ($categorie=="ville"){
+          $titre = $_POST['titre'];
+          $nomprenom_artiste = $_POST['nomprenom_artiste'];
+          $contenu = $_POST['contenu'];
+          $article= new articleA;
+          $article->addArticle(NULL,$categorie,$titre,$nomprenom_artiste,$contenu);
+          header('location:listeartville.php');
+         }
       }
      
-  }
+
+    }
+     
+  
   //else if()
-}
+
 ?>
 
 <!DOCTYPE html>
@@ -159,7 +107,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 
-<body>
+<body >
     
     <div class="topnav">
         <div class="container text-light">
@@ -276,11 +224,11 @@ function openImg(imgName) {
 }
 
    </script>
-    <div class="w3-sidebar w3-bar-block w3-dark-grey w3-animate-left" style="display:none" id="mySidebar">
-      <button class="w3-bar-item w3-button w3-large" 
+    <div class="w3-sidebar w3-bar-block  w3-animate-left" style="display:none" id="mySidebar">
+      <button class="w3-bar-item w3-button w3-dark-grey w3-large" 
       onclick="w3_close()">Close &times;</button>
-      <a href="#article" class="w3-bar-item w3-button">consulter Article</a>
-      <a href="#ajart" class="w3-bar-item w3-button">Ajout Article</a>
+      <a href="#article" class="w3-bar-item w3-button w3-green">consulter Article</a>
+      <a href="#ajart" onclick="document.getElementById('id01').style.display='block'" class="w3-bar-item w3-button">Ajout Article</a>
       <a href="#comment" class="w3-bar-item w3-button">consulter commentaire</a>
       <a href="#ajcmnt" class="w3-bar-item w3-button">Ajout commentaire</a>
     </div>
@@ -308,6 +256,7 @@ function openImg(imgName) {
        <button class="tablink w3-bar-item w3-button" onclick="openCity(event, 'art1')">art</button>
        <button class="tablink w3-bar-item w3-button" onclick="openCity(event, 'culture')">culture</button>
        <button class="tablink w3-bar-item w3-button" onclick="openCity(event, 'tun')">La tunisie</button>
+       <button class="tablink w3-bar-item w3-button" onclick="openCity(event, 'ar')">ajouter article</button>
       </div>
     
       <div id="art1" class="w3-container city">
@@ -324,6 +273,48 @@ function openImg(imgName) {
       <div id="tun" class="w3-container city">
        <h1>Tunisie</h1>
        <p>est un État arabophone et à majorité musulmane d'Afrique du Nord souverain depuis 1956</p><br>
+      </div>
+      <div id="ar" class="w3-container city">
+       <h1 id="ajart">Ajouter un article</h1>
+       <form  action="" method="POST" id="artBtn">
+                  <div class="row">
+                    <div class="col-md-6 form-group">
+                    <select class="form-control" id="cat" type= "text" name="categorie">
+                       <option value="">Choisir une catégorie*</option>
+                        <option>tableau</option>
+                        <option >vetement</option>
+                        <option >monument</option>
+                        <option >livre</option>
+                        <option >ville</option>
+                    </select>
+                      <span id="msg3" ></span> 
+                      
+                    </div><br>
+                    <div class="col-md-6 form-group">
+                      <input id="title" type= "text" class="form-control" name="titre" placeholder="titre* " autocomplete="off"> 
+                      <span id="msg4" style="color: red" ></span>
+                    </div>
+                   
+
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6 form-group">
+                      <input id="nom" type= "text" class="form-control" name="nomprenom_artiste" placeholder="nom complet*" > 
+                      <span id="msg7" style="color: red"></span>
+                    </div>
+                  </div><br>
+                  <div class="row">
+                    <div class="col form-group">
+                      <textarea id="art" type= "text" class="form-control" name="contenu" placeholder="Votre Article*"autocomplete="off"></textarea>
+                        <label id="msg8" style="color: red"></label>
+                    </div>
+                  </div>
+                  <div>
+                    <button id="buttonId" onclick=""  type="submit" name="add" value="Save" class="btn btn-primary" style="background-color:green; " >Poster article</button>
+                  </div>
+                  
+                  
+                </form>
       </div>
     
       <div class="w3-container w3-light-grey w3-padding">
@@ -494,69 +485,19 @@ function openImg(imgName) {
                     
                       <div class="col-md-6 form-group">
                         <input id="noun" type= "text" class="form-control" placeholder="Votre nom*" > 
-                        <label id="msg1"></label>
+                        <span id="msg1" style="color: red" ></span>
                       </div>
                     
                       <div class="col form-group">
-                        <input id="cmnt" type= "text" class="form-control" placeholder="Votre commentaire*" > 
-                        <label id="msg2"></label>
+                        <input id="cmnt" type= "text" class="form-control" placeholder="Votre commentaire*" autocomplete="off" > 
+                        <span id="msg2" style="color: red" ></span>
                       </div>
-                      <button id="client" type="submit" class="btn btn-primary" style="background-color:green;"onclick="verif()"  >Poster commentaire <a href="#comment">+</a></button>
+                      <button id="client" type="submit"  class="btn btn-primary" style="background-color:green;" >Poster commentaire</button>
                       
                   </form>
   
                 </div>
-              <div class="reply-form">
-                <h4 id="ajart">Ajouter un article</h4>
-                
-                
-                <form  action="" method="POST" id="artBtn">
-                  <div class="row">
-                    <div class="col-md-6 form-group">
-                    <select class="form-control" id="cat" type= "text" name="categorie">         
-                        <option>tableau</option>
-                        <option >vetement</option>
-                        <option >monument</option>
-                        <option >livre</option>
-                        <option >ville</option>
-                    </select>
-                      <span id="msg3" ></span> 
-                      
-                    </div>
-                    <div class="col-md-6 form-group">
-                      <input id="title" type= "text" class="form-control" name="titre" placeholder="titre*" > 
-                      <span id="msg4" ></span>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-6 form-group">
-                      <input id="dc" type= "date" class="form-control" name="date_creation" placeholder="date creation*" > 
-                      
-                    </div>
-                    <div class="col-md-6 form-group">
-                      <input id="dm" type= "date" class="form-control" name="date_modification" placeholder="date modification*" > 
-                      
-                    </div>
-                    <div class="col-md-6 form-group">
-                      <input id="nom" type= "text" class="form-control" name="nomprenom_artiste" placeholder="nom complet*" > 
-                      <span id="msg7" ></span>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col form-group">
-                      <input id="art" type= "text" class="form-control" name="contenu" placeholder="Votre Article*" > 
-                        <label id="msg8"></label>
-                    </div>
-                  </div>
-                  <div>
-                    <button id="buttonId" onclick=""  type="submit" name="add" value="Save" class="btn btn-primary" style="background-color:green; " >Poster article</button>
-                  </div>
-                  
-                  
-                </form>
-               
-
-              </div>
+            
 
             </div><!-- End blog comments -->
 
@@ -571,11 +512,11 @@ function openImg(imgName) {
                   <button class="w3-button w3-black">Dérouler</button>
                   <div class="w3-dropdown-content w3-bar-block w3-card w3-light-grey" id="myDIV">
                   <input class="w3-input w3-padding" type="text" placeholder="Search.." id="myInput" onkeyup="categories()">
-                  <a class="w3-bar-item w3-button" href="tab.php">tableaux</a>
-                  <a class="w3-bar-item w3-button" href="vt.php">vetements traditionnels</a>
-                  <a class="w3-bar-item w3-button" href="mon.php">monumens</a>
-                  <a class="w3-bar-item w3-button" href="lvr.php">livres</a>
-                  <a class="w3-bar-item w3-button" href="vl.php">villes</a>
+                  <a class="w3-bar-item w3-button" href="listearttab.php">tableaux</a>
+                  <a class="w3-bar-item w3-button" href="listartvt.php">vetements traditionnels</a>
+                  <a class="w3-bar-item w3-button" href="listeartmon.php">monumens</a>
+                  <a class="w3-bar-item w3-button" href="listeartlvr.php">livres</a>
+                  <a class="w3-bar-item w3-button" href="listeartville.php">villes</a>
                   </div>
                </div>
             </div>
@@ -603,6 +544,10 @@ function openImg(imgName) {
               </div>
             
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
 
 <script>
@@ -722,12 +667,11 @@ function openImg(imgName) {
 </footer>
 <!-- End Footer -->
 <script>
+
        document.getElementById('artBtn').addEventListener('submit', function (event) {
     var category = document.getElementById('cat').value;
     var title = document.getElementById('title').value;
-    var dateCreation = document.getElementById('dc').value;
-    var dateModification = document.getElementById('dm').value;
-    var artistName = document.getElementById('nom').value;
+        var artistName = document.getElementById('nom').value;
     var articleContent = document.getElementById('art').value;
 
     // Reset error messages
@@ -738,13 +682,13 @@ function openImg(imgName) {
   
     // Check if category is selected
     if (category === '') {
-        document.getElementById('msg3').textContent = 'Please select a category.';
+        document.getElementById('msg3').textContent = 'vous devez selectionner une categorie*.';
         event.preventDefault();
     }
 
     // Check if title is filled and contains only alphabetic characters
     if (title === '' || !/^[a-zA-Z]+$/.test(title)) {
-        document.getElementById('msg4').textContent = 'Please enter a valid title with only alphabetical characters.';
+        document.getElementById('msg4').textContent = 'entrer un titre valide seulement avec des lettes alphabitiques*.';
         event.preventDefault();
     }
 
@@ -752,16 +696,17 @@ function openImg(imgName) {
 
     // Check if artist name is filled and contains only alphabetic characters
     if (artistName === '' || !/^[a-zA-Z]+$/.test(artistName)) {
-        document.getElementById('msg7').textContent = 'Please enter a valid artist\'s name with only alphabetical characters.';
+        document.getElementById('msg7').textContent = 'entrer un nom valide seulement avec des lettes alphabitiques*.';
         event.preventDefault();
     }
 
     // Check if article content is filled
     if (articleContent === '') {
-        document.getElementById('msg8').textContent = 'Please enter your article content.';
+        document.getElementById('msg8').textContent = 'cette entrer est obligatoire*.';
         event.preventDefault();
     }
 });
+
 
 </script>
 

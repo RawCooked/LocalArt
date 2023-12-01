@@ -8,13 +8,13 @@ class article
     private ?string $nomprenom_artiste= null ;
     private ?string $contenu= null ;
 
-     public function __construct($id= null , $ca, $t,$dc,$dm,$n,$c,)
+     public function __construct($id= null , $ca, $t,$n,$c,)
     {
         $this->id_art = $id;
         $this->categorie = $ca;
         $this->titre = $t;
-        $this->date_creation = $dc;
-        $this->date_modification = $dm;
+        //$this->date_creation = $dc;
+        //$this->date_modification = $dm;
         $this->nomprenom_artiste = $n;
         $this->contenu = $c;
     }
