@@ -244,7 +244,26 @@ class commentC{
           // or throw: throw new Exception("Error deleting article: " . $e->getMessage());
           return false;
       }
-  } 
+  }
+  public function updatecomment($commentId,$comment,$nom,$date_modification): bool
+    {
+        try {
+            $pdo = config::getConnexion();
+
+            $query = $pdo->prepare('UPDATE commentaire SET comment=?, nom=?, date_modification=? WHERE id_cmnt = ?');
+            $query->execute([$comment,$nom,$date_modification,$commentId]);
+
+            // Check if the query was successful
+            if ($query->rowCount() > 0) {
+                return true; // User updated successfully
+            } else {
+                return false; // User not found or not updated
+            }
+        } catch (Exception $e) {
+            echo "Error: " . $e->getMessage();
+            return false; // An error occurred
+        }
+    } 
 
 
 

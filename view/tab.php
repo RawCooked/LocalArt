@@ -74,6 +74,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         
     }
+    elseif (isset($_POST['updatecommentId'])) {
+        $commentId = $_POST['id_cmnt'];
+        $comment = $_POST['comment'];
+        $nom = $_POST['nom'];
+        $date_modification = date("Y-m-d H:i:s");
+        $commente->updatecomment($commentId,$comment,$nom,$date_modification);
+        
+    }
+        
 
     
           
@@ -353,24 +362,39 @@ form input[type="submit"]:hover {
             <div class="comment-img"><img src="assets/img/blog/comments-2.jpg" alt=""></div>
             <div>
                 <h5><a href=""><?= $commentaire['nom']; ?></a></h5>
-                <div>Le <?= date_format(date_create($commentaire['date_creation']), 'd/m/Y à H:i') ;?></div>
+                <p><?= $commentaire['comment']; ?></p>
+                <div>Ajouter Le <?= date_format(date_create($commentaire['date_creation']), 'd/m/Y à H:i') ;?></div>
                 <?php if ($commentaire['date_creation'] < $commentaire['date_modification']) { ?>
                     <div>Modifié Le <?= date_format(date_create($commentaire['date_modification']), 'd/m/Y à H:i');?> </div> 
                 <?php } ?>
-                <p><?= $commentaire['comment']; ?></p>
             </div>
         </div>
     </div>
 </div>
 <table>
                 <tr>
+                    <td>
+                    <button onclick="openUpdateFormc(<?php echo $commentaire['id_cmnt']; ?>)">Update</button>
+                    </td>
+                    <td>
                     <form method="POST" action="">
                         <input type="hidden" value=<?PHP echo $commentaire['id_cmnt']; ?> name="deletecommentId">
-                        <button name="delete_button" type="submit"class="w3-container w3-green" onclick="return confirm('Voulez-vous vraiment supprimer ce commentaire?');">Delete</button>
+                        <button name="delete_button" type="submit"class="w3-container w3-red" onclick="return confirm('Voulez-vous vraiment supprimer ce commentaire?');">Delete</button>
                     </form>
                     </td>
                 </tr>
-
+                <tr id="updateFormc<?php echo $commentaire['id_cmnt']; ?>" style="display: none;">
+                <td colspan="6">
+                    <form method="POST" action="">
+                        <input type="hidden" value=<?PHP echo $commentaire['id_cmnt']; ?> name="id_cmnt">
+                        <label>Nom:</label>
+                        <input type="text"  name="nom" value="<?php echo $commentaire['nom']; ?>"><br>
+                        <label>Contenu:</label>
+                        <textarea  name="comment"><?php echo $commentaire['comment']; ?></textarea><br>
+                        <input type="submit" name="updatecommentId" value="Update">
+                    </form>
+                </td>
+            </tr>
             
             </table>
 <?php } ?>
@@ -410,7 +434,17 @@ form input[type="submit"]:hover {
         return false;
     }
 </script>
+<script>
+    function openUpdateFormc(commentId) {
+            // Hide all update forms
+            document.querySelectorAll('[id^="updateFormc"]').forEach(function two (form) {
+                form.style.display = 'none';
+            });
 
+            // Show the selected update form
+            document.getElementById('updateFormc' + commentId).style.display = 'table-row';
+        }
+</script>
     <script>
         function openUpdateForm(articleId) {
             // Hide all update forms
