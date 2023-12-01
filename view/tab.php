@@ -57,12 +57,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['ajout'])) {
             $comment = $_POST['comment'];
             $nom = $_POST['nom'];
+            $date_creation = date("Y-m-d H:i:s");
+            $date_modification = $date_creation;
             $commente= new commentC;
-            $commente->addcomment(NULL,$comment,$nom);
+            $commente->addcomment(NULL,$comment,$nom, $date_creation,$date_modification);
             header('Location: listearttab.php');
             exit;
 
     }
+    $commente= new commentC;
+    if (isset($_POST['deletecommentId'])) {
+        $commentId = $_POST['deletecommentId'];
+        // Add proper error handling
+        if (!$commente->deletecomment($commentId)) {
+            echo "Error deleting article.";
+        }
+        
+    }
+
     
           
 }
@@ -334,18 +346,33 @@ form input[type="submit"]:hover {
                         </p>
                     </div>
                 </div>
-                <?php foreach ($cm as $commentaire) { ?>
-    <div id="comment-2" class="comment">
+                <?php foreach ($cm as $index => $commentaire) { ?>
+                    <div class="blog-comments">
+    <div id="comment-<?php echo $index; ?>" class="comment">
         <div class="d-flex">
             <div class="comment-img"><img src="assets/img/blog/comments-2.jpg" alt=""></div>
             <div>
                 <h5><a href=""><?= $commentaire['nom']; ?></a></h5>
-                <p>
-                    <?= $commentaire['comment'] ?>
-                </p>
+                <div>Le <?= date_format(date_create($commentaire['date_creation']), 'd/m/Y à H:i') ;?></div>
+                <?php if ($commentaire['date_creation'] < $commentaire['date_modification']) { ?>
+                    <div>Modifié Le <?= date_format(date_create($commentaire['date_modification']), 'd/m/Y à H:i');?> </div> 
+                <?php } ?>
+                <p><?= $commentaire['comment']; ?></p>
             </div>
         </div>
     </div>
+</div>
+<table>
+                <tr>
+                    <form method="POST" action="">
+                        <input type="hidden" value=<?PHP echo $commentaire['id_cmnt']; ?> name="deletecommentId">
+                        <button name="delete_button" type="submit"class="w3-container w3-green" onclick="return confirm('Voulez-vous vraiment supprimer ce commentaire?');">Delete</button>
+                    </form>
+                    </td>
+                </tr>
+
+            
+            </table>
 <?php } ?>
 
                 <div class="blog-comments">

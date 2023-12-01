@@ -3,16 +3,16 @@ class commentaire{
     private ?int $id_cmnt= null ;
     private ?string $comment= null ;
     private ?string $nom= null ;
-    //private ?string $date_creation= null ;
-    //private ?string $date_modification= null ;
+    private ?string $date_creation= null ;
+    private ?string $date_modification= null ;
 
      public function __construct($idc= null , $co, $n)
     {
         $this->id_cmnt = $idc;
         $this->comment = $co;
         $this->nom = $n;
-        //$this->date_creation = $dc;
-        //$this->date_modification = $dm;
+        $this->date_creation = $dc;
+        $this->date_modification = $dm;
     }
  
 

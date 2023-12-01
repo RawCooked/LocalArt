@@ -195,7 +195,7 @@ class commentC{
         try {
             $pdo = config::getConnexion(); // Get the PDO connection using the config class
 
-            $query = $pdo->prepare('SELECT * FROM commentaire');
+            $query = $pdo->prepare('SELECT * FROM commentaire cm ORDER BY cm.date_creation DESC' );
             $query->execute();
 
             $result = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -210,13 +210,13 @@ class commentC{
             return null;
         }
     }
-    public function addcomment($idc,$co,$n): bool
+    public function addcomment($idc,$co,$n,$dc,$dm): bool
     {
         try {
             $pdo = config::getConnexion(); // Get the PDO connection using the config class
     
-            $query = $pdo->prepare('INSERT INTO commentaire (id_cmnt, comment, 	nom) VALUES (?, ?, ?)');
-        $query->execute([$idc,$co,$n]);
+            $query = $pdo->prepare('INSERT INTO commentaire (id_cmnt, comment, 	nom,date_creation,date_modification) VALUES (?, ?, ?,?,?)');
+        $query->execute([$idc,$co,$n,$dc,$dm]);
     
             // Check if the query was successful
             if ($query->rowCount() > 0) {
@@ -228,7 +228,23 @@ class commentC{
             echo "Error: " . $e->getMessage();
             return false; // An error occurred
         }
-    }   
+    }  
+    public function deletecomment($id_cmnt): bool
+  {
+      try {
+          $pdo = config::getconnexion();
+  
+          $query = $pdo->prepare('DELETE FROM commentaire WHERE id_cmnt = ?');
+          $query->execute([$id_cmnt]);
+  
+          return $query->rowCount() > 0;
+      } catch (PDOException $e) {
+          // Log the error or throw an exception for the calling code to handle
+          // Log: error_log("Error deleting article: " . $e->getMessage());
+          // or throw: throw new Exception("Error deleting article: " . $e->getMessage());
+          return false;
+      }
+  } 
 
 
 
