@@ -11,10 +11,8 @@ if (isset($_POST['deleteArticleId'])) {
     
 }
 
-$category='tableau';
+$category='vetement';
 $tab = $c->listArticlesByCategory($category);
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -236,8 +234,8 @@ $tab = $c->listArticlesByCategory($category);
             <table>
                 <tr>
                     <td>
-                    <form method="POST" action="tab.php">
-                        <input type="submit" name="detaille" class="w3-container w3-light-green" value="Détail"  >
+                    <form method="POST" action="vt.php">
+                        <input type="submit" name="detaille" class="w3-container w3-light-green" value="Détaille"  >
                         <input type="hidden" value=<?PHP echo $article['id_art']; ?> name="id_art">
                     </form><br>
                     <form method="POST" action="">
@@ -298,7 +296,7 @@ $tab = $c->listArticlesByCategory($category);
                   <input class="w3-input w3-padding" type="text" placeholder="Search.." id="myInput" onkeyup="categories()">
                   <a class="w3-bar-item w3-button" href="listearttab.php">tableaux</a>
                   <a class="w3-bar-item w3-button" href="listartvt.php">vetements traditionnels</a>
-                  <a class="w3-bar-item w3-button"  href="listeartmon.php">monumens</a>
+                  <a class="w3-bar-item w3-button"href="listeartmon.php">monumens</a>
                   <a class="w3-bar-item w3-button" href="listeartlvr.php">livres</a>
                   <a class="w3-bar-item w3-button" href="listeartville.php">villes</a>
                   </div>
