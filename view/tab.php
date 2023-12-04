@@ -374,7 +374,7 @@ form input[type="submit"]:hover {
 <table>
                 <tr>
                     <td>
-                    <button onclick="openUpdateFormc(<?php echo $commentaire['id_cmnt']; ?>)">Update</button>
+                    <button class="w3-container w3-green" onclick="openUpdateFormc(<?php echo $commentaire['id_cmnt']; ?>)">Update</button>
                     </td>
                     <td>
                     <form method="POST" action="">
@@ -484,6 +484,10 @@ form input[type="submit"]:hover {
 
         if (commentaire.trim() === '') {
             document.getElementById('msg6').textContent = 'Le champ du commentaire ne peut pas être vide.';
+            event.preventDefault();
+        }
+        else if (commentaire.length<3){
+            document.getElementById('msg6').textContent = 'Le champ du commentaire doit contenir 3 chiffres mimimum.';
             event.preventDefault();
         }
     });

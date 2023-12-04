@@ -178,6 +178,18 @@ public function updateArticle($articleId,$categorie,$titre,$nomprenom_artiste,$c
         }
     }
 }
+$articleA=new articleA();
+
+if (isset($_GET['action'])) {
+  if ($_GET['action'] === 'gettype') {
+      $articleA->getSubjectsBycategorie();
+      exit; // Important to exit to prevent further execution
+  }
+  // Add more actions if needed
+}
+
+header('HTTP/1.1 400 Bad Request');
+// echo json_encode(["error" => "Invalid Request"]);
 // $reclamationController = new articleA();
 
 // if (isset($_GET['action'])) {
@@ -279,6 +291,7 @@ class commentC{
 
 
 }
+
 
 
 

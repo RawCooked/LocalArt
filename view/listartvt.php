@@ -235,7 +235,7 @@ $tab = $c->listArticlesByCategory($category);
                 <tr>
                     <td>
                     <form method="POST" action="vt.php">
-                        <input type="submit" name="detaille" class="w3-container w3-light-green" value="Détaille"  >
+                        <input type="submit" name="detaille" class="w3-container w3-light-green" value="Détail"  >
                         <input type="hidden" value=<?PHP echo $article['id_art']; ?> name="id_art">
                     </form><br>
                     <form method="POST" action="">

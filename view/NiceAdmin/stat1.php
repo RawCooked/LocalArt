@@ -176,7 +176,7 @@ error_reporting(E_ALL);
                  <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
 
                      <li>
-                         <a href="http://localhost/kousayPI/CPK/views/NiceAdmin/tabart.php">
+                         <a href="http://localhost/projet/view/NiceAdmin/tabart.php">
                              <i class="bi bi-circle"></i><span>Data Tables</span>
                          </a>
                          
@@ -185,7 +185,7 @@ error_reporting(E_ALL);
                  <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
 
                      <li>
-                         <a href="http://localhost/last%20khedma/views/tab.php">
+                         <a href="http://localhost/projet/view/NiceAdmin/tabcmnt.php">
                              <i class="bi bi-circle"></i><span>Data Tables</span>
                          </a>
                          
@@ -264,22 +264,37 @@ error_reporting(E_ALL);
 
                             <!-- Donut Chart -->
                         <div id="donutChart"></div>
+                        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        fetch('/projet/controller/articleA.php?action=gettype')
+            .then(response => response.json())
+            .then(data => {
+                if (Array.isArray(data)) {
+                    renderchart(data);
+                } else {
+                    console.error('invalid data format:', data);
+                }
+            })
+            .catch(error => console.error('error fetching data', error));
 
-                            <script>
-                                document.addEventListener("DOMContentLoaded", () => {
-                                new ApexCharts(document.querySelector("#donutChart"), {
-                                series: [44, 55, 13, 43, 22],
-                                chart: {
-                                 height: 350,
-                                type: 'donut',
-                                toolbar: {
-                                show: true
-                                    }
-                                },
-                                labels: ['Team A', 'Team B', 'Team C', 'Team D', 'Team E'],
-                                }).render();
-                                });
-                            </script>
+        function renderchart(data) {
+            new ApexCharts(document.querySelector("#donutChart"), {
+                series: data.map(item => item.nombre),
+                chart: {
+                    height: 350,
+                    type: 'donut',
+                    toolbar: {
+                        show: true
+                    }
+                },
+                labels: data.map(item => item.categorie), // Remplacez "label" par la propriété réelle de vos données
+            }).render();
+        }
+    });
+</script>
+
                                 <!-- End Donut Chart -->
 
             </div>

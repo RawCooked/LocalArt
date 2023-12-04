@@ -156,23 +156,23 @@ $tab = $c->listArticlesByCategory($category);
       </header>
     
       <div class="w3-bar w3-border-bottom">
-       <button class="tablink w3-bar-item w3-button" onclick="openCity(event, 'art1')">Litterature</button>
-       <button class="tablink w3-bar-item w3-button" onclick="openCity(event, 'culture')">écrivain</button>
+       <button class="tablink w3-bar-item w3-button" onclick="openCity(event, 'art1')">Peintures</button>
+       <button class="tablink w3-bar-item w3-button" onclick="openCity(event, 'culture')">célébrités</button>
       </div>
     
       <div id="art1" class="w3-container city">
-       <h1>La litterature tunisienne</h1>
-       <p>La littérature de la Tunisie désigne l'ensemble des productions, orales et écrites, des populations (12 millions environ en 2023) du territoire tunisien, à toute époque, en toute langue. Elle inclut également celles des écrivains la diaspora tunisienne (plus d'un million, en 2023) et celles des auteurs qui revendiquent, au moins partiellement, leur appartenance à la culture tunisienne.</p>
+       <h1>La peinture tunisienne</h1>
+       <p>La peinture tunisienne est, dans le domaine de l'histoire de l'art, la production picturale en Tunisie, particulièrement à partir de la période du protectorat français, à la fin du xixe siècle.</p>
        </div>
     
       <div id="culture" class="w3-container city">
-       <h1>des écrivains tunisens</h1>
-       <p><li>Ibn Al-Abbar (1199-1260)</li>
-       <li>Abdelaziz El Aroui (1898-1971)</li>
-       <li>Tahar Haddad (1899-1935)</li>
-       <li>Tahar Guiga (1922-1993), nouvelliste</li>
-       <li>Emna Belhadj Yahia (1945- ), enseignante, philosophe, essayiste</li>
-        et beaucoup plus d'autres écrivains
+       <h1>les peintres tunisiens</h1>
+       <p><li>Zoubeir Turki (1924-2009)</li>
+       <li>Jellal Ben Abdallah (1921-2017)</li>
+       <li>Abdelaziz Gorgi (1928-2008)</li>
+       <li>Adel Megdiche (1949-2022)</li>
+       <li>Hédi Turki (1922-2019 )</li>
+       <p> et beaucoup plus d'autres peintres
     </p>
        
       </div>

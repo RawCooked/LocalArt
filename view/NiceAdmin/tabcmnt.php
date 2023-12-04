@@ -57,6 +57,7 @@ $tab = $c->listcomments($articleId);
 
      <!-- Template Main CSS File -->
      <link href="assets/css/style.css" rel="stylesheet">
+     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
      <!-- =======================================================
   * Template Name: NiceAdmin
@@ -193,7 +194,7 @@ $tab = $c->listcomments($articleId);
                  <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
 
                      <li>
-                         <a href="http://localhost/kousayPI/CPK/views/NiceAdmin/tabart.php">
+                         <a href="http://localhost/projet/view/NiceAdmin/tabart.php">
                              <i class="bi bi-circle"></i><span>Data Tables</span>
                          </a>
                          
@@ -202,7 +203,7 @@ $tab = $c->listcomments($articleId);
                  <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
 
                      <li>
-                         <a href="http://localhost/last%20khedma/views/NiceAdmin/tablereponse.php">
+                         <a href="http://localhost/projet/view/NiceAdmin/tabcmnt.php">
                              <i class="bi bi-circle"></i><span>Data Tables</span>
                          </a>
                          
@@ -216,7 +217,7 @@ $tab = $c->listcomments($articleId);
                 <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
 
                     <li>
-                        <a href="http://localhost/last%20khedma/views/NiceAdmin/stat.php">
+                        <a href="http://localhost/last%20khedma/views/NiceAdmin/stat1.php">
                             <i class="bi bi-circle"></i><span>ApexCharts</span>
                         </a>
                     </li>
@@ -297,7 +298,7 @@ $tab = $c->listcomments($articleId);
                 
                 <form method="POST" action="">
                     <input type="hidden" value=<?PHP echo $commentaire['id_cmnt']; ?> name="deletecommentId">
-                    <button name="delete_button" type="submit">Delete</button>
+                    <button name="delete_button" class="w3-container w3-red" type="submit">Delete</button>
                 </form>
             </td>
         </tr>

@@ -478,26 +478,7 @@ function openImg(imgName) {
 
               </div><!-- End comment #2-->
               
-                <div class="reply-form" >
                 
-                  <h4 id="ajcmnt">Ajouter un commentaire</h4>
-                  <form  id="myBtn">
-                    
-                      <div class="col-md-6 form-group">
-                        <input id="noun" type= "text" class="form-control" placeholder="Votre nom*" > 
-                        <span id="msg1" style="color: red" ></span>
-                      </div>
-                    
-                      <div class="col form-group">
-                        <input id="cmnt" type= "text" class="form-control" placeholder="Votre commentaire*" autocomplete="off" > 
-                        <span id="msg2" style="color: red" ></span>
-                      </div>
-                      <button id="client" type="submit"  class="btn btn-primary" style="background-color:green;" >Poster commentaire</button>
-                      
-                  </form>
-  
-                </div>
-            
 
             </div><!-- End blog comments -->
 
