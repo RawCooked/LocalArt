@@ -52,6 +52,17 @@ $tab = $c->listArticlesByCategory($category);
     <link rel="stylesheet" href="test3.css">
     <link rel="stylesheet" href="test4.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        .fixed-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 75%;
+            height: 75%;
+            padding: 25px;
+            border: 1px solid #ccc;
+        }
+    </style>
 </head>
 
 <body>
@@ -208,8 +219,8 @@ $tab = $c->listArticlesByCategory($category);
 
     <div style="text-align:center">
       <div class="w3-panel w3-leftbar w3-light-grey">
-        <p class="w3-xlarge w3-serif"><i>“ Le retour à la culture. Oui, vraiment, à la culture. On ne peut pas consommer grand-chose si l'on reste tranquillement assis à lire des livres. ”</i><br></p>
-        <p> Aldous Huxley</p> 
+        <p class="w3-xlarge w3-serif"><i>“La peinture est une poésie muette et la poésie une peinture parlante.”</i><br></p>
+        <p> Marie-Philippe</p> 
       </div> 
       <!-- The four columns -->
       
@@ -229,7 +240,9 @@ $tab = $c->listArticlesByCategory($category);
         <div class="row">
 
           <div class="col-lg-8 entries">
-          <?php foreach ($tab as $article) { ?>
+             
+          <?php if ($tab){
+           foreach ($tab as $article) { ?>
             <div>
             
             
@@ -237,7 +250,7 @@ $tab = $c->listArticlesByCategory($category);
                 <tr>
                     <td>
                     <form method="POST" action="tab.php">
-                        <input type="submit" name="detaille" class="w3-container w3-light-green" value="Détail"  >
+                        <input type="submit" name="detaille" class="w3-container w3-light-green" value="Détail  " >
                         <input type="hidden" value=<?PHP echo $article['id_art']; ?> name="id_art">
                     </form><br>
                     <form method="POST" action="">
@@ -278,7 +291,7 @@ $tab = $c->listArticlesByCategory($category);
                 
              </div>
              
-             <?php } 
+             <?php }} 
                         function insertLineBreaks($text, $lineLength) {
                 // Insert a line break after every $lineLength characters
                 return wordwrap($text, $lineLength, "<br>", true);
@@ -303,6 +316,17 @@ $tab = $c->listArticlesByCategory($category);
                   <a class="w3-bar-item w3-button" href="listeartville.php">villes</a>
                   </div>
                </div>
+            </div>
+            <div >
+                 
+            <img src="image9.jfif"  class="w3-border" alt="Norway" style="padding: 25px; width: 75%; height: 75%;">
+            </div>
+            <div><br>
+            <img src="image10.jfif"  class="w3-border w3-grey" alt="Norway" style="padding: 25px; width: 75%; height: 75%; ">
+            </div><br>
+            <div><br>
+            <img src="image11.jfif"  class="w3-border w3-black" alt="Norway" style="padding: 25px; width: 75%; height: 75%; ">
+            </div>
             </div>
           
           </div>

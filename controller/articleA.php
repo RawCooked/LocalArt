@@ -203,6 +203,28 @@ header('HTTP/1.1 400 Bad Request');
 //header('HTTP/1.1 400 Bad Request');
 //echo json_encode(["error" => "Invalid Request"]);
 class commentC{
+    public function listcommentsart($idArt) {
+        try {
+            $pdo = config::getConnexion(); // Get the PDO connection using the config class
+    
+            // Assuming that 'id_art' is a column in the 'commentaire' table
+            $query = $pdo->prepare('SELECT cm.* FROM commentaire cm WHERE cm.id_art = :id');
+            $query->bindParam(':id', $idArt, PDO::PARAM_INT);
+            $query->execute();
+    
+            $result = $query->fetchAll(PDO::FETCH_ASSOC);
+    
+            if ($result) {
+                return $result; // Return the result to the caller
+            } else {
+                return null; // No records found
+            }
+        } catch (Exception $e) {
+            echo "Error: " . $e->getMessage();
+            return null;
+        }
+    }
+    
     public function listcomments() {
         try {
             $pdo = config::getConnexion(); // Get the PDO connection using the config class
@@ -222,13 +244,13 @@ class commentC{
             return null;
         }
     }
-    public function addcomment($idc,$co,$n,$dc,$dm): bool
+    public function addcomment($idc,$co,$n,$dc,$dm,$i): bool
     {
         try {
             $pdo = config::getConnexion(); // Get the PDO connection using the config class
     
-            $query = $pdo->prepare('INSERT INTO commentaire (id_cmnt, comment, 	nom,date_creation,date_modification) VALUES (?, ?, ?,?,?)');
-        $query->execute([$idc,$co,$n,$dc,$dm]);
+            $query = $pdo->prepare('INSERT INTO commentaire (id_cmnt, comment, 	nom,date_creation,date_modification,id_art) VALUES (?, ?, ?,?,?,?)');
+        $query->execute([$idc,$co,$n,$dc,$dm,$i]);
     
             // Check if the query was successful
             if ($query->rowCount() > 0) {

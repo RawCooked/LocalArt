@@ -22,8 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $c = new commentC();
-$articleId = $_POST['id_art'];
-$tab = $c->listcomments($articleId);
+$tab = $c->listcomments();
 
 ?>
  <!DOCTYPE html>
@@ -285,6 +284,9 @@ $tab = $c->listcomments($articleId);
                 </thead>
                 <tbody>
                 <?php
+       if ($tab){
+
+           
     foreach ($tab as $commentaire) {
     ?>
         <tr>
@@ -303,7 +305,7 @@ $tab = $c->listcomments($articleId);
             </td>
         </tr>
     <?php
-    }
+    } }  
     ?>
                 </tbody>
               </table>

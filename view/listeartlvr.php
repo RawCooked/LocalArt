@@ -160,7 +160,7 @@ $tab = $c->listArticlesByCategory($category);
     
       <div id="art1" class="w3-container city">
        <h1>La litterature tunisienne</h1>
-       <p>La littérature de la Tunisie désigne l'ensemble des productions, orales et écrites, des populations (12 millions environ en 2023) du territoire tunisien, à toute époque, en toute langue. Elle inclut également celles des écrivains la diaspora tunisienne (plus d'un million, en 2023) et celles des auteurs qui revendiquent, au moins partiellement, leur appartenance à la culture tunisienne.</p>
+       <p>La municipalité ou commune urbaine en Tunisie est un territoire de plusieurs centaines d'hectares incluant des espaces urbains et ruraux organisés en général autour d'une ville principale</p>
        </div>
     
       <div id="culture" class="w3-container city">
@@ -227,7 +227,7 @@ $tab = $c->listArticlesByCategory($category);
         <div class="row">
 
           <div class="col-lg-8 entries">
-          <?php foreach ($tab as $article) { ?>
+          <?php  if ($tab){ foreach ($tab as $article) { ?>
             <div>
             
             
@@ -276,7 +276,7 @@ $tab = $c->listArticlesByCategory($category);
                 
              </div>
              
-             <?php } 
+             <?php }}
                         function insertLineBreaks($text, $lineLength) {
                 // Insert a line break after every $lineLength characters
                 return wordwrap($text, $lineLength, "<br>", true);
@@ -302,6 +302,16 @@ $tab = $c->listArticlesByCategory($category);
                   </div>
                </div>
             </div>
+            <div >
+                 
+                 <img src="image18.jpg"  class="w3-border" alt="Norway" style="padding: 25px; width: 75%; height: 75%;">
+                 </div>
+                 <div><br>
+                 <img src="image19.jpg"  class="w3-border w3-grey" alt="Norway" style="padding: 25px; width: 75%; height: 75%; ">
+                 </div><br>
+                 <div><br>
+                 <img src="image20.jfif"  class="w3-border w3-black" alt="Norway" style="padding: 25px; width: 75%; height: 75%; ">
+                 </div>
           
           </div>
         </div>

@@ -55,14 +55,16 @@ if (
 }
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['ajout'])) {
+       
             $comment = $_POST['comment'];
             $nom = $_POST['nom'];
             $date_creation = date("Y-m-d H:i:s");
             $date_modification = $date_creation;
+            $articleId=$_POST['id_art'];
             $commente= new commentC;
-            $commente->addcomment(NULL,$comment,$nom, $date_creation,$date_modification);
-            header('Location: listearttab.php');
-            exit;
+            $commente->addcomment(NULL,$comment,$nom, $date_creation,$date_modification,$articleId);
+            //header('Location: listearttab.php');
+            //exit;
 
     }
     $commente= new commentC;
@@ -89,9 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 
-$com = new commentC();
-//$articleId = $_POST['id_art'] ?? null;
-$cm = $com->listcomments();
+//$cm = $com->listcomments();
 ?>
 
 <!DOCTYPE html>
@@ -223,7 +223,9 @@ $cm = $com->listcomments();
 
     <?php
     if (isset($_POST['id_art'])) {
-        $article = $articleA->showArticle($_POST['id_art']);
+        
+        $article = $articleA->showArticle($_POST['id_art']); 
+        
     ?>
     <style >
     .city {display:none}
@@ -355,7 +357,18 @@ form input[type="submit"]:hover {
                         </p>
                     </div>
                 </div>
-                <?php foreach ($cm as $index => $commentaire) { ?>
+                <?php
+if ($article['id_art']){
+    $articleId = $article['id_art'];
+
+
+$com = new commentC();
+$cm = $com->listcommentsart($articleId);
+if ($cm){ 
+
+
+?> 
+                <?php  foreach ($cm as $index => $commentaire) { ?>
                     <div class="blog-comments">
     <div id="comment-<?php echo $index; ?>" class="comment">
         <div class="d-flex">
@@ -397,8 +410,10 @@ form input[type="submit"]:hover {
             </tr>
             
             </table>
-<?php } ?>
-
+<?php }} ?>
+<?php } else {
+    echo "No ID provided";
+    } ?>
                 <div class="blog-comments">
                     <h4 class="comments-count" id="comment">Commentaires</h4>
 
@@ -416,6 +431,7 @@ form input[type="submit"]:hover {
                       <textarea id="cmnt" name="comment" class="w3-panel w3-border w3-border-red w3-hover-border-green" placeholder="Votre commentaire*" autocomplete="off"></textarea>
                         <span id="msg6" style="color: red" ></span>
                       </div>
+                      <input type="text" name="id_art" hidden value="<?php echo $_POST["id_art"]; ?>"/>
                       <button id="client" type="submit" name="ajout" value="Save" class="btn btn-primary" style="background-color:green;" >Poster commentaire</button>
                       
                   </form>

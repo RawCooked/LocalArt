@@ -227,7 +227,7 @@ $tab = $c->listArticlesByCategory($category);
         <div class="row">
 
           <div class="col-lg-8 entries">
-          <?php foreach ($tab as $article) { ?>
+          <?php  if ($tab){ foreach ($tab as $article) { ?>
             <div>
             
             
@@ -276,7 +276,7 @@ $tab = $c->listArticlesByCategory($category);
                 
              </div>
              
-             <?php } 
+             <?php }}
                         function insertLineBreaks($text, $lineLength) {
                 // Insert a line break after every $lineLength characters
                 return wordwrap($text, $lineLength, "<br>", true);
@@ -302,6 +302,16 @@ $tab = $c->listArticlesByCategory($category);
                   </div>
                </div>
             </div>
+            <div >
+                 
+                 <img src="image15.jfif"  class="w3-border" alt="Norway" style="padding: 25px; width: 75%; height: 75%;">
+                 </div>
+                 <div><br>
+                 <img src="image16.jfif"  class="w3-border w3-grey" alt="Norway" style="padding: 25px; width: 75%; height: 75%; ">
+                 </div><br>
+                 <div><br>
+                 <img src="image17.jfif"  class="w3-border w3-black" alt="Norway" style="padding: 25px; width: 75%; height: 75%; ">
+                 </div>
           
           </div>
         </div>
